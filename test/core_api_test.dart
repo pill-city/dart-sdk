@@ -1,32 +1,22 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:pill_city/api.dart';
 import 'package:test/test.dart';
+import 'package:pill_city/pill_city.dart';
 
 
 /// tests for CoreApi
 void main() {
-  // final instance = CoreApi();
+  final instance = PillCity().getCoreApi();
 
-  group('tests for CoreApi', () {
+  group(CoreApi, () {
     // Get all available plugins
     //
-    //Future<List<String>> getAvailablePlugins() async
+    //Future<BuiltList<String>> getAvailablePlugins() async
     test('test getAvailablePlugins', () async {
       // TODO
     });
 
     // Get or poll latest home posts
     //
-    //Future<List<Post>> getHome({ String toId, String fromId }) async
+    //Future<BuiltList<Post>> getHome({ String toId, String fromId }) async
     test('test getHome', () async {
       // TODO
     });
@@ -40,7 +30,7 @@ void main() {
 
     // Get plugins enabled by the user
     //
-    //Future<List<String>> getPlugins() async
+    //Future<BuiltList<String>> getPlugins() async
     test('test getPlugins', () async {
       // TODO
     });

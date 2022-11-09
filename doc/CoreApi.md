@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **getAvailablePlugins**
-> List<String> getAvailablePlugins()
+> BuiltList<String> getAvailablePlugins()
 
 Get all available plugins
 
@@ -25,12 +25,12 @@ Get all available plugins
 ```dart
 import 'package:pill_city/api.dart';
 
-final api_instance = CoreApi();
+final api = PillCity().getCoreApi();
 
 try {
-    final result = api_instance.getAvailablePlugins();
-    print(result);
-} catch (e) {
+    final response = api.getAvailablePlugins();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling CoreApi->getAvailablePlugins: $e\n');
 }
 ```
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<String>**
+**BuiltList&lt;String&gt;**
 
 ### Authorization
 
@@ -54,28 +54,25 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getHome**
-> List<Post> getHome(toId, fromId)
+> BuiltList<Post> getHome(toId, fromId)
 
 Get or poll latest home posts
 
 ### Example
 ```dart
 import 'package:pill_city/api.dart';
-// TODO Configure HTTP Bearer authorization: bearer
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
 
-final api_instance = CoreApi();
-final toId = toId_example; // String | To which post ID should the server poll latest posts on home. If both to_id and from_id are present, to_id will take precedence.
-final fromId = fromId_example; // String | From which post ID should the server fetch posts on home. If empty, the server will fetch the latest posts.
+final api = PillCity().getCoreApi();
+final String toId = toId_example; // String | To which post ID should the server poll latest posts on home. If both to_id and from_id are present, to_id will take precedence.
+final String fromId = fromId_example; // String | From which post ID should the server fetch posts on home. If empty, the server will fetch the latest posts.
 
 try {
-    final result = api_instance.getHome(toId, fromId);
-    print(result);
-} catch (e) {
+    final response = api.getHome(toId, fromId);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling CoreApi->getHome: $e\n');
 }
 ```
@@ -89,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Post>**](Post.md)
+[**BuiltList&lt;Post&gt;**](Post.md)
 
 ### Authorization
 
@@ -110,19 +107,16 @@ Get the logged in user
 ### Example
 ```dart
 import 'package:pill_city/api.dart';
-// TODO Configure HTTP Bearer authorization: bearer
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
 
-final api_instance = CoreApi();
+final api = PillCity().getCoreApi();
 
 try {
-    final result = api_instance.getMe();
-    print(result);
-} catch (e) {
+    final response = api.getMe();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling CoreApi->getMe: $e\n');
 }
 ```
@@ -146,26 +140,23 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPlugins**
-> List<String> getPlugins()
+> BuiltList<String> getPlugins()
 
 Get plugins enabled by the user
 
 ### Example
 ```dart
 import 'package:pill_city/api.dart';
-// TODO Configure HTTP Bearer authorization: bearer
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
 
-final api_instance = CoreApi();
+final api = PillCity().getCoreApi();
 
 try {
-    final result = api_instance.getPlugins();
-    print(result);
-} catch (e) {
+    final response = api.getPlugins();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling CoreApi->getPlugins: $e\n');
 }
 ```
@@ -175,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<String>**
+**BuiltList&lt;String&gt;**
 
 ### Authorization
 
@@ -197,13 +188,13 @@ Sign in
 ```dart
 import 'package:pill_city/api.dart';
 
-final api_instance = CoreApi();
-final signInRequest = SignInRequest(); // SignInRequest | 
+final api = PillCity().getCoreApi();
+final SignInRequest signInRequest = ; // SignInRequest | 
 
 try {
-    final result = api_instance.signIn(signInRequest);
-    print(result);
-} catch (e) {
+    final response = api.signIn(signInRequest);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling CoreApi->signIn: $e\n');
 }
 ```

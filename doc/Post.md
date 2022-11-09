@@ -15,16 +15,16 @@ Name | Type | Description | Notes
 **isPublic** | **bool** | Whether the post is publicly accessible on the server | 
 **reshareable** | **bool** | Whether the post is publicly reshareable on the server | [optional] [default to false]
 **resharedFrom** | [**PostResharedFrom**](PostResharedFrom.md) |  | [optional] 
-**mediaUrls** | **List<String>** | URLs for the post's media | [optional] [default to const []]
-**mediaUrlsV2** | [**List<MediaUrlV2>**](MediaUrlV2.md) | v2 media URLs for the comment's media | [optional] [default to const []]
-**reactions** | [**List<Reaction>**](Reaction.md) | Reactions for the post | [optional] [default to const []]
-**comments** | [**List<Comment>**](Comment.md) | Comments for the post | [optional] [default to const []]
-**circles** | [**List<AnonymizedCircle>**](AnonymizedCircle.md) | Circles that the post is published in | [optional] [default to const []]
+**mediaUrls** | **BuiltList&lt;String&gt;** | URLs for the post's media | [optional] [default to ListBuilder()]
+**mediaUrlsV2** | [**BuiltList&lt;MediaUrlV2&gt;**](MediaUrlV2.md) | v2 media URLs for the comment's media | [optional] [default to ListBuilder()]
+**reactions** | [**BuiltList&lt;Reaction&gt;**](Reaction.md) | Reactions for the post | [optional] 
+**comments** | [**BuiltList&lt;Comment&gt;**](Comment.md) | Comments for the post | [optional] 
+**circles** | [**BuiltList&lt;AnonymizedCircle&gt;**](AnonymizedCircle.md) | Circles that the post is published in | [optional] 
 **deleted** | **bool** | Whether the post is deleted | [optional] [default to false]
 **blocked** | **bool** | Whether the post's author is blocked | [optional] [default to false]
 **isUpdateAvatar** | **bool** | Whether the post is an update avatar post | [optional] [default to false]
 **poll** | [**ResharedPostPoll**](ResharedPostPoll.md) |  | [optional] 
-**linkPreviews** | [**List<LinkPreview>**](LinkPreview.md) | Link previews extracted from the text content | [optional] [default to const []]
+**linkPreviews** | [**BuiltList&lt;LinkPreview&gt;**](LinkPreview.md) | Link previews extracted from the text content | [optional] [default to ListBuilder()]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

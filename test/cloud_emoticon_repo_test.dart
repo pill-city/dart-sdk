@@ -1,34 +1,23 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:pill_city/api.dart';
 import 'package:test/test.dart';
+import 'package:pill_city/pill_city.dart';
 
 // tests for CloudEmoticonRepo
 void main() {
-  // final instance = CloudEmoticonRepo();
+  final instance = CloudEmoticonRepoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test CloudEmoticonRepo', () {
+  group(CloudEmoticonRepo, () {
     // Emoticon categories for the repo
-    // List<CloudEmoticonCategory> categories (default value: const [])
+    // BuiltList<CloudEmoticonCategory> categories
     test('to test the property `categories`', () async {
       // TODO
     });
 
     // Description for the repo
-    // List<String> information (default value: const [])
+    // BuiltList<String> information
     test('to test the property `information`', () async {
       // TODO
     });
 
-
   });
-
 }

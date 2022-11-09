@@ -1,23 +1,14 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:pill_city/api.dart';
 import 'package:test/test.dart';
+import 'package:pill_city/pill_city.dart';
 
 // tests for Poll
 void main() {
-  // final instance = Poll();
+  //final instance = PollBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test Poll', () {
+  group(Poll, () {
     // Choices for this poll
-    // List<PollChoice> choices (default value: const [])
+    // BuiltList<PollChoice> choices
     test('to test the property `choices`', () async {
       // TODO
     });
@@ -28,7 +19,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

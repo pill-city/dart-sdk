@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:pill_city/api.dart';
 import 'package:test/test.dart';
+import 'package:pill_city/pill_city.dart';
 
 // tests for Post
 void main() {
-  // final instance = Post();
+  final instance = PostBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test Post', () {
+  group(Post, () {
     // Permanent ID for the post
     // String id
     test('to test the property `id`', () async {
@@ -57,31 +48,31 @@ void main() {
     });
 
     // URLs for the post's media
-    // List<String> mediaUrls (default value: const [])
+    // BuiltList<String> mediaUrls (default value: ListBuilder())
     test('to test the property `mediaUrls`', () async {
       // TODO
     });
 
     // v2 media URLs for the comment's media
-    // List<MediaUrlV2> mediaUrlsV2 (default value: const [])
+    // BuiltList<MediaUrlV2> mediaUrlsV2 (default value: ListBuilder())
     test('to test the property `mediaUrlsV2`', () async {
       // TODO
     });
 
     // Reactions for the post
-    // List<Reaction> reactions (default value: const [])
+    // BuiltList<Reaction> reactions
     test('to test the property `reactions`', () async {
       // TODO
     });
 
     // Comments for the post
-    // List<Comment> comments (default value: const [])
+    // BuiltList<Comment> comments
     test('to test the property `comments`', () async {
       // TODO
     });
 
     // Circles that the post is published in
-    // List<AnonymizedCircle> circles (default value: const [])
+    // BuiltList<AnonymizedCircle> circles
     test('to test the property `circles`', () async {
       // TODO
     });
@@ -110,12 +101,10 @@ void main() {
     });
 
     // Link previews extracted from the text content
-    // List<LinkPreview> linkPreviews (default value: const [])
+    // BuiltList<LinkPreview> linkPreviews (default value: ListBuilder())
     test('to test the property `linkPreviews`', () async {
       // TODO
     });
 
-
   });
-
 }

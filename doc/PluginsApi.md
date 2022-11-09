@@ -21,12 +21,12 @@ Get emoticons
 ```dart
 import 'package:pill_city/api.dart';
 
-final api_instance = PluginsApi();
+final api = PillCity().getPluginsApi();
 
 try {
-    final result = api_instance.getEmoticons();
-    print(result);
-} catch (e) {
+    final response = api.getEmoticons();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling PluginsApi->getEmoticons: $e\n');
 }
 ```

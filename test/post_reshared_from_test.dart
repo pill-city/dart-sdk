@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:pill_city/api.dart';
 import 'package:test/test.dart';
+import 'package:pill_city/pill_city.dart';
 
 // tests for PostResharedFrom
 void main() {
-  // final instance = PostResharedFrom();
+  final instance = PostResharedFromBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test PostResharedFrom', () {
+  group(PostResharedFrom, () {
     // Permanent ID for the reshared post
     // String id
     test('to test the property `id`', () async {
@@ -40,13 +31,13 @@ void main() {
     });
 
     // URLs for the reshared post's media
-    // List<String> mediaUrls (default value: const [])
+    // BuiltList<String> mediaUrls (default value: ListBuilder())
     test('to test the property `mediaUrls`', () async {
       // TODO
     });
 
     // v2 media URLs for the comment's media
-    // List<MediaUrlV2> mediaUrlsV2 (default value: const [])
+    // BuiltList<MediaUrlV2> mediaUrlsV2 (default value: ListBuilder())
     test('to test the property `mediaUrlsV2`', () async {
       // TODO
     });
@@ -62,7 +53,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }
