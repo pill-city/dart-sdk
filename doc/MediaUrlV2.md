@@ -1,8 +1,8 @@
-# openapi.model.MediaUrlV2
+# pill_city.model.MediaUrlV2
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

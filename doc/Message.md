@@ -1,8 +1,8 @@
-# openapi.model.Message
+# pill_city.model.Message
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

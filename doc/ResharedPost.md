@@ -1,8 +1,8 @@
-# openapi.model.ResharedPost
+# pill_city.model.ResharedPost
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

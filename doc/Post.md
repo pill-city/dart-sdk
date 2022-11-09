@@ -1,8 +1,8 @@
-# openapi.model.Post
+# pill_city.model.Post
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

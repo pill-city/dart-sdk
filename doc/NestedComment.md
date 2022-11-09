@@ -1,8 +1,8 @@
-# openapi.model.NestedComment
+# pill_city.model.NestedComment
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

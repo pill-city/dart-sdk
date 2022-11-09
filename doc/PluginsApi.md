@@ -1,8 +1,8 @@
-# openapi.api.PluginsApi
+# pill_city.api.PluginsApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 All URIs are relative to *https://api.pill.city/api*
@@ -19,7 +19,7 @@ Get emoticons
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 
 final api_instance = PluginsApi();
 

@@ -1,8 +1,8 @@
-# openapi.model.User
+# pill_city.model.User
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# openapi.model.Circle
+# pill_city.model.Circle
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

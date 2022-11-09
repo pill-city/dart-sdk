@@ -1,8 +1,8 @@
-# openapi.model.SignIn200Response
+# pill_city.model.SignIn200Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

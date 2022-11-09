@@ -1,8 +1,8 @@
-# openapi.model.CloudEmoticonEntry
+# pill_city.model.CloudEmoticonEntry
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

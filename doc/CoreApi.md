@@ -1,8 +1,8 @@
-# openapi.api.CoreApi
+# pill_city.api.CoreApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 All URIs are relative to *https://api.pill.city/api*
@@ -23,7 +23,7 @@ Get all available plugins
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 
 final api_instance = CoreApi();
 
@@ -60,7 +60,7 @@ Get or poll latest home posts
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 // TODO Configure HTTP Bearer authorization: bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken('YOUR_ACCESS_TOKEN');
@@ -109,7 +109,7 @@ Get the logged in user
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 // TODO Configure HTTP Bearer authorization: bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken('YOUR_ACCESS_TOKEN');
@@ -152,7 +152,7 @@ Get plugins enabled by the user
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 // TODO Configure HTTP Bearer authorization: bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('bearer').setAccessToken('YOUR_ACCESS_TOKEN');
@@ -195,7 +195,7 @@ Sign in
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 
 final api_instance = CoreApi();
 final signInRequest = SignInRequest(); // SignInRequest | 

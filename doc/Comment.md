@@ -1,8 +1,8 @@
-# openapi.model.Comment
+# pill_city.model.Comment
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# openapi.model.Poll
+# pill_city.model.Poll
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:pill_city/api.dart';
 ```
 
 ## Properties
