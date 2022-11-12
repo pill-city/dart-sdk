@@ -12,6 +12,8 @@ class _$MediaUrlV2 extends MediaUrlV2 {
   @override
   final bool processed;
   @override
+  final String? processedUrl;
+  @override
   final num? width;
   @override
   final num? height;
@@ -24,6 +26,7 @@ class _$MediaUrlV2 extends MediaUrlV2 {
   _$MediaUrlV2._(
       {required this.originalUrl,
       required this.processed,
+      this.processedUrl,
       this.width,
       this.height,
       this.dominantColorHex})
@@ -47,6 +50,7 @@ class _$MediaUrlV2 extends MediaUrlV2 {
     return other is MediaUrlV2 &&
         originalUrl == other.originalUrl &&
         processed == other.processed &&
+        processedUrl == other.processedUrl &&
         width == other.width &&
         height == other.height &&
         dominantColorHex == other.dominantColorHex;
@@ -56,7 +60,9 @@ class _$MediaUrlV2 extends MediaUrlV2 {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, originalUrl.hashCode), processed.hashCode),
+            $jc(
+                $jc($jc($jc(0, originalUrl.hashCode), processed.hashCode),
+                    processedUrl.hashCode),
                 width.hashCode),
             height.hashCode),
         dominantColorHex.hashCode));
@@ -67,6 +73,7 @@ class _$MediaUrlV2 extends MediaUrlV2 {
     return (newBuiltValueToStringHelper(r'MediaUrlV2')
           ..add('originalUrl', originalUrl)
           ..add('processed', processed)
+          ..add('processedUrl', processedUrl)
           ..add('width', width)
           ..add('height', height)
           ..add('dominantColorHex', dominantColorHex))
@@ -84,6 +91,10 @@ class MediaUrlV2Builder implements Builder<MediaUrlV2, MediaUrlV2Builder> {
   bool? _processed;
   bool? get processed => _$this._processed;
   set processed(bool? processed) => _$this._processed = processed;
+
+  String? _processedUrl;
+  String? get processedUrl => _$this._processedUrl;
+  set processedUrl(String? processedUrl) => _$this._processedUrl = processedUrl;
 
   num? _width;
   num? get width => _$this._width;
@@ -107,6 +118,7 @@ class MediaUrlV2Builder implements Builder<MediaUrlV2, MediaUrlV2Builder> {
     if ($v != null) {
       _originalUrl = $v.originalUrl;
       _processed = $v.processed;
+      _processedUrl = $v.processedUrl;
       _width = $v.width;
       _height = $v.height;
       _dominantColorHex = $v.dominantColorHex;
@@ -136,6 +148,7 @@ class MediaUrlV2Builder implements Builder<MediaUrlV2, MediaUrlV2Builder> {
                 originalUrl, r'MediaUrlV2', 'originalUrl'),
             processed: BuiltValueNullFieldError.checkNotNull(
                 processed, r'MediaUrlV2', 'processed'),
+            processedUrl: processedUrl,
             width: width,
             height: height,
             dominantColorHex: dominantColorHex);

@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MediaUrlV2, () {
-    // Original URL to the media
+    // URL to the original media
     // String originalUrl
     test('to test the property `originalUrl`', () async {
       // TODO
@@ -16,6 +16,12 @@ void main() {
     // Whether the media has been processed/optimized
     // bool processed
     test('to test the property `processed`', () async {
+      // TODO
+    });
+
+    // URL to the processed media
+    // String processedUrl
+    test('to test the property `processedUrl`', () async {
       // TODO
     });
 
