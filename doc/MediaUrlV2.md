@@ -8,7 +8,7 @@ import 'package:pill_city/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**originalUrl** | **String** | URL to the original media. | 
+**originalUrl** | **String** | URL to the original media | 
 **processed** | **bool** | Whether the media has been processed/optimized | 
 **processedUrl** | **String** | URL to the processed media | [optional] 
 **width** | **num** | Processed media width | [optional] 

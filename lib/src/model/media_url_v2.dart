@@ -11,7 +11,7 @@ part 'media_url_v2.g.dart';
 /// MediaUrlV2
 ///
 /// Properties:
-/// * [originalUrl] - URL to the original media.
+/// * [originalUrl] - URL to the original media
 /// * [processed] - Whether the media has been processed/optimized
 /// * [processedUrl] - URL to the processed media
 /// * [width] - Processed media width
@@ -19,7 +19,7 @@ part 'media_url_v2.g.dart';
 /// * [dominantColorHex] - Processed media dominant color in hex
 @BuiltValue()
 abstract class MediaUrlV2 implements Built<MediaUrlV2, MediaUrlV2Builder> {
-  /// URL to the original media.
+  /// URL to the original media
   @BuiltValueField(wireName: r'original_url')
   String get originalUrl;
 

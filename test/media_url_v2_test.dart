@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MediaUrlV2, () {
-    // URL to the original media.
+    // URL to the original media
     // String originalUrl
     test('to test the property `originalUrl`', () async {
       // TODO
