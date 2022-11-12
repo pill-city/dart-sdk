@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **createdAtSeconds** | **num** | In epoch seconds, when the comment was created | 
 **author** | [**User**](User.md) |  | 
 **content** | **String** | Text content for the comment | [optional] [default to '']
-**mediaUrls** | **BuiltList&lt;String&gt;** | URLs for the comment's media | [optional] [default to ListBuilder()]
 **mediaUrlsV2** | [**BuiltList&lt;MediaUrlV2&gt;**](MediaUrlV2.md) | v2 media URLs for the comment's media | [optional] [default to ListBuilder()]
 **deleted** | **bool** | Whether the comment is deleted | [optional] [default to false]
 **blocked** | **bool** | Whether the comment's author is blocked | [optional] [default to false]

@@ -19,7 +19,6 @@ part 'comment.g.dart';
 /// * [createdAtSeconds] - In epoch seconds, when the comment was created
 /// * [author] 
 /// * [content] - Text content for the comment
-/// * [mediaUrls] - URLs for the comment's media
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [deleted] - Whether the comment is deleted
 /// * [blocked] - Whether the comment's author is blocked
@@ -40,10 +39,6 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   /// Text content for the comment
   @BuiltValueField(wireName: r'content')
   String? get content;
-
-  /// URLs for the comment's media
-  @BuiltValueField(wireName: r'media_urls')
-  BuiltList<String>? get mediaUrls;
 
   /// v2 media URLs for the comment's media
   @BuiltValueField(wireName: r'media_urls_v2')
@@ -68,7 +63,6 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CommentBuilder b) => b
       ..content = ''
-      ..mediaUrls = ListBuilder()
       ..mediaUrlsV2 = ListBuilder()
       ..deleted = false
       ..blocked = false;
@@ -109,13 +103,6 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
       yield serializers.serialize(
         object.content,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.mediaUrls != null) {
-      yield r'media_urls';
-      yield serializers.serialize(
-        object.mediaUrls,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
     if (object.mediaUrlsV2 != null) {
@@ -196,13 +183,6 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
             specifiedType: const FullType(String),
           ) as String;
           result.content = valueDes;
-          break;
-        case r'media_urls':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.mediaUrls.replace(valueDes);
           break;
         case r'media_urls_v2':
           final valueDes = serializers.deserialize(

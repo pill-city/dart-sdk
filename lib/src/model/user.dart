@@ -14,7 +14,6 @@ part 'user.g.dart';
 /// Properties:
 /// * [id] - The permanent short ID for the user
 /// * [createdAtSeconds] - In epoch seconds, when the user signed up
-/// * [avatarUrl] - URL to the user's avatar
 /// * [avatarUrlV2] 
 /// * [profilePic] - User's choice of profile banner. The choices are defined on web frontend.
 /// * [displayName] - User's displayed/regular name. Can be changed.
@@ -27,10 +26,6 @@ abstract class User implements Built<User, UserBuilder> {
   /// In epoch seconds, when the user signed up
   @BuiltValueField(wireName: r'created_at_seconds')
   num get createdAtSeconds;
-
-  /// URL to the user's avatar
-  @BuiltValueField(wireName: r'avatar_url')
-  String? get avatarUrl;
 
   @BuiltValueField(wireName: r'avatar_url_v2')
   MediaUrlV2? get avatarUrlV2;
@@ -77,13 +72,6 @@ class _$UserSerializer implements PrimitiveSerializer<User> {
       object.createdAtSeconds,
       specifiedType: const FullType(num),
     );
-    if (object.avatarUrl != null) {
-      yield r'avatar_url';
-      yield serializers.serialize(
-        object.avatarUrl,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.avatarUrlV2 != null) {
       yield r'avatar_url_v2';
       yield serializers.serialize(
@@ -141,13 +129,6 @@ class _$UserSerializer implements PrimitiveSerializer<User> {
             specifiedType: const FullType(num),
           ) as num;
           result.createdAtSeconds = valueDes;
-          break;
-        case r'avatar_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.avatarUrl = valueDes;
           break;
         case r'avatar_url_v2':
           final valueDes = serializers.deserialize(

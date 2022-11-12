@@ -19,12 +19,6 @@ void main() {
       // TODO
     });
 
-    // URL to the user's avatar
-    // String avatarUrl
-    test('to test the property `avatarUrl`', () async {
-      // TODO
-    });
-
     // MediaUrlV2 avatarUrlV2
     test('to test the property `avatarUrlV2`', () async {
       // TODO

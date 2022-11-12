@@ -39,44 +39,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(CloudEmoticonEntry)]),
           () => new ListBuilder<CloudEmoticonEntry>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(PollChoice)]),
-          () => new ListBuilder<PollChoice>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(PollChoice)]),
-          () => new ListBuilder<PollChoice>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
+          () => new ListBuilder<MediaUrlV2>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
           () => new ListBuilder<MediaUrlV2>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
           () => new ListBuilder<MediaUrlV2>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
-          () => new ListBuilder<MediaUrlV2>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
           () => new ListBuilder<MediaUrlV2>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NestedComment)]),
           () => new ListBuilder<NestedComment>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
           () => new ListBuilder<MediaUrlV2>())
@@ -92,6 +68,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(LinkPreview)]),
           () => new ListBuilder<LinkPreview>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PollChoice)]),
+          () => new ListBuilder<PollChoice>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PollChoice)]),
+          () => new ListBuilder<PollChoice>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(User)]),
           () => new ListBuilder<User>()))

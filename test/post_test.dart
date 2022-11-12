@@ -47,12 +47,6 @@ void main() {
       // TODO
     });
 
-    // URLs for the post's media
-    // BuiltList<String> mediaUrls (default value: ListBuilder())
-    test('to test the property `mediaUrls`', () async {
-      // TODO
-    });
-
     // v2 media URLs for the comment's media
     // BuiltList<MediaUrlV2> mediaUrlsV2 (default value: ListBuilder())
     test('to test the property `mediaUrlsV2`', () async {

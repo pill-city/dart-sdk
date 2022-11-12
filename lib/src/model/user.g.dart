@@ -12,8 +12,6 @@ class _$User extends User {
   @override
   final num createdAtSeconds;
   @override
-  final String? avatarUrl;
-  @override
   final MediaUrlV2? avatarUrlV2;
   @override
   final String? profilePic;
@@ -26,7 +24,6 @@ class _$User extends User {
   _$User._(
       {required this.id,
       required this.createdAtSeconds,
-      this.avatarUrl,
       this.avatarUrlV2,
       this.profilePic,
       this.displayName})
@@ -49,7 +46,6 @@ class _$User extends User {
     return other is User &&
         id == other.id &&
         createdAtSeconds == other.createdAtSeconds &&
-        avatarUrl == other.avatarUrl &&
         avatarUrlV2 == other.avatarUrlV2 &&
         profilePic == other.profilePic &&
         displayName == other.displayName;
@@ -59,9 +55,7 @@ class _$User extends User {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
-                    avatarUrl.hashCode),
+            $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
                 avatarUrlV2.hashCode),
             profilePic.hashCode),
         displayName.hashCode));
@@ -72,7 +66,6 @@ class _$User extends User {
     return (newBuiltValueToStringHelper(r'User')
           ..add('id', id)
           ..add('createdAtSeconds', createdAtSeconds)
-          ..add('avatarUrl', avatarUrl)
           ..add('avatarUrlV2', avatarUrlV2)
           ..add('profilePic', profilePic)
           ..add('displayName', displayName))
@@ -91,10 +84,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
   num? get createdAtSeconds => _$this._createdAtSeconds;
   set createdAtSeconds(num? createdAtSeconds) =>
       _$this._createdAtSeconds = createdAtSeconds;
-
-  String? _avatarUrl;
-  String? get avatarUrl => _$this._avatarUrl;
-  set avatarUrl(String? avatarUrl) => _$this._avatarUrl = avatarUrl;
 
   MediaUrlV2Builder? _avatarUrlV2;
   MediaUrlV2Builder get avatarUrlV2 =>
@@ -119,7 +108,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
     if ($v != null) {
       _id = $v.id;
       _createdAtSeconds = $v.createdAtSeconds;
-      _avatarUrl = $v.avatarUrl;
       _avatarUrlV2 = $v.avatarUrlV2?.toBuilder();
       _profilePic = $v.profilePic;
       _displayName = $v.displayName;
@@ -150,7 +138,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
               id: BuiltValueNullFieldError.checkNotNull(id, r'User', 'id'),
               createdAtSeconds: BuiltValueNullFieldError.checkNotNull(
                   createdAtSeconds, r'User', 'createdAtSeconds'),
-              avatarUrl: avatarUrl,
               avatarUrlV2: _avatarUrlV2?.build(),
               profilePic: profilePic,
               displayName: displayName);

@@ -27,7 +27,6 @@ part 'post.g.dart';
 /// * [isPublic] - Whether the post is publicly accessible on the server
 /// * [reshareable] - Whether the post is publicly reshareable on the server
 /// * [resharedFrom] 
-/// * [mediaUrls] - URLs for the post's media
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [reactions] - Reactions for the post
 /// * [comments] - Comments for the post
@@ -64,10 +63,6 @@ abstract class Post implements Built<Post, PostBuilder> {
 
   @BuiltValueField(wireName: r'reshared_from')
   PostResharedFrom? get resharedFrom;
-
-  /// URLs for the post's media
-  @BuiltValueField(wireName: r'media_urls')
-  BuiltList<String>? get mediaUrls;
 
   /// v2 media URLs for the comment's media
   @BuiltValueField(wireName: r'media_urls_v2')
@@ -112,7 +107,6 @@ abstract class Post implements Built<Post, PostBuilder> {
   static void _defaults(PostBuilder b) => b
       ..content = ''
       ..reshareable = false
-      ..mediaUrls = ListBuilder()
       ..mediaUrlsV2 = ListBuilder()
       ..deleted = false
       ..blocked = false
@@ -174,13 +168,6 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
       yield serializers.serialize(
         object.resharedFrom,
         specifiedType: const FullType.nullable(PostResharedFrom),
-      );
-    }
-    if (object.mediaUrls != null) {
-      yield r'media_urls';
-      yield serializers.serialize(
-        object.mediaUrls,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
     if (object.mediaUrlsV2 != null) {
@@ -318,13 +305,6 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
           ) as PostResharedFrom?;
           if (valueDes == null) continue;
           result.resharedFrom.replace(valueDes);
-          break;
-        case r'media_urls':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.mediaUrls.replace(valueDes);
           break;
         case r'media_urls_v2':
           final valueDes = serializers.deserialize(

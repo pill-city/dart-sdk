@@ -20,7 +20,6 @@ part 'post_reshared_from.g.dart';
 /// * [createdAtSeconds] - In epoch seconds, when the reshared post was created
 /// * [author] 
 /// * [content] - Text content for the reshared post
-/// * [mediaUrls] - URLs for the reshared post's media
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [poll] 
 /// * [deleted] - Whether the reshared post is deleted
@@ -34,7 +33,6 @@ abstract class PostResharedFrom implements ResharedPost, Built<PostResharedFrom,
   static void _defaults(PostResharedFromBuilder b) => b
       ..deleted = false
       ..mediaUrlsV2 = ListBuilder()
-      ..mediaUrls = ListBuilder()
       ..content = '';
 
   @BuiltValueSerializer(custom: true)
@@ -87,13 +85,6 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
       yield serializers.serialize(
         object.poll,
         specifiedType: const FullType.nullable(ResharedPostPoll),
-      );
-    }
-    if (object.mediaUrls != null) {
-      yield r'media_urls';
-      yield serializers.serialize(
-        object.mediaUrls,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
     if (object.content != null) {
@@ -168,13 +159,6 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
           ) as ResharedPostPoll?;
           if (valueDes == null) continue;
           result.poll.replace(valueDes);
-          break;
-        case r'media_urls':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.mediaUrls.replace(valueDes);
           break;
         case r'content':
           final valueDes = serializers.deserialize(

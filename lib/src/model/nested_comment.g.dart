@@ -16,8 +16,6 @@ class _$NestedComment extends NestedComment {
   @override
   final String? content;
   @override
-  final BuiltList<String>? mediaUrls;
-  @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
   final bool? deleted;
@@ -32,7 +30,6 @@ class _$NestedComment extends NestedComment {
       required this.createdAtSeconds,
       required this.author,
       this.content,
-      this.mediaUrls,
       this.mediaUrlsV2,
       this.deleted,
       this.blocked})
@@ -58,7 +55,6 @@ class _$NestedComment extends NestedComment {
         createdAtSeconds == other.createdAtSeconds &&
         author == other.author &&
         content == other.content &&
-        mediaUrls == other.mediaUrls &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
         deleted == other.deleted &&
         blocked == other.blocked;
@@ -70,11 +66,9 @@ class _$NestedComment extends NestedComment {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
-                            author.hashCode),
-                        content.hashCode),
-                    mediaUrls.hashCode),
+                    $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
+                        author.hashCode),
+                    content.hashCode),
                 mediaUrlsV2.hashCode),
             deleted.hashCode),
         blocked.hashCode));
@@ -87,7 +81,6 @@ class _$NestedComment extends NestedComment {
           ..add('createdAtSeconds', createdAtSeconds)
           ..add('author', author)
           ..add('content', content)
-          ..add('mediaUrls', mediaUrls)
           ..add('mediaUrlsV2', mediaUrlsV2)
           ..add('deleted', deleted)
           ..add('blocked', blocked))
@@ -116,12 +109,6 @@ class NestedCommentBuilder
   String? get content => _$this._content;
   set content(String? content) => _$this._content = content;
 
-  ListBuilder<String>? _mediaUrls;
-  ListBuilder<String> get mediaUrls =>
-      _$this._mediaUrls ??= new ListBuilder<String>();
-  set mediaUrls(ListBuilder<String>? mediaUrls) =>
-      _$this._mediaUrls = mediaUrls;
-
   ListBuilder<MediaUrlV2>? _mediaUrlsV2;
   ListBuilder<MediaUrlV2> get mediaUrlsV2 =>
       _$this._mediaUrlsV2 ??= new ListBuilder<MediaUrlV2>();
@@ -147,7 +134,6 @@ class NestedCommentBuilder
       _createdAtSeconds = $v.createdAtSeconds;
       _author = $v.author.toBuilder();
       _content = $v.content;
-      _mediaUrls = $v.mediaUrls?.toBuilder();
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
       _deleted = $v.deleted;
       _blocked = $v.blocked;
@@ -181,7 +167,6 @@ class NestedCommentBuilder
                   createdAtSeconds, r'NestedComment', 'createdAtSeconds'),
               author: author.build(),
               content: content,
-              mediaUrls: _mediaUrls?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
               deleted: deleted,
               blocked: blocked);
@@ -191,8 +176,6 @@ class NestedCommentBuilder
         _$failedField = 'author';
         author.build();
 
-        _$failedField = 'mediaUrls';
-        _mediaUrls?.build();
         _$failedField = 'mediaUrlsV2';
         _mediaUrlsV2?.build();
       } catch (e) {

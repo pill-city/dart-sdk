@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **isPublic** | **bool** | Whether the post is publicly accessible on the server | 
 **reshareable** | **bool** | Whether the post is publicly reshareable on the server | [optional] [default to false]
 **resharedFrom** | [**PostResharedFrom**](PostResharedFrom.md) |  | [optional] 
-**mediaUrls** | **BuiltList&lt;String&gt;** | URLs for the post's media | [optional] [default to ListBuilder()]
 **mediaUrlsV2** | [**BuiltList&lt;MediaUrlV2&gt;**](MediaUrlV2.md) | v2 media URLs for the comment's media | [optional] [default to ListBuilder()]
 **reactions** | [**BuiltList&lt;Reaction&gt;**](Reaction.md) | Reactions for the post | [optional] 
 **comments** | [**BuiltList&lt;Comment&gt;**](Comment.md) | Comments for the post | [optional] 

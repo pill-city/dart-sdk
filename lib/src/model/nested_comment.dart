@@ -18,7 +18,6 @@ part 'nested_comment.g.dart';
 /// * [createdAtSeconds] - In epoch seconds, when the nested comment was created
 /// * [author] 
 /// * [content] - Text content for the nested comment
-/// * [mediaUrls] - URLs for the nested comment's media
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [deleted] - Whether the nested comment is deleted
 /// * [blocked] - Whether the nested comment's author is blocked
@@ -39,10 +38,6 @@ abstract class NestedComment implements Built<NestedComment, NestedCommentBuilde
   @BuiltValueField(wireName: r'content')
   String? get content;
 
-  /// URLs for the nested comment's media
-  @BuiltValueField(wireName: r'media_urls')
-  BuiltList<String>? get mediaUrls;
-
   /// v2 media URLs for the comment's media
   @BuiltValueField(wireName: r'media_urls_v2')
   BuiltList<MediaUrlV2>? get mediaUrlsV2;
@@ -62,7 +57,6 @@ abstract class NestedComment implements Built<NestedComment, NestedCommentBuilde
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(NestedCommentBuilder b) => b
       ..content = ''
-      ..mediaUrls = ListBuilder()
       ..mediaUrlsV2 = ListBuilder()
       ..deleted = false
       ..blocked = false;
@@ -103,13 +97,6 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
       yield serializers.serialize(
         object.content,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.mediaUrls != null) {
-      yield r'media_urls';
-      yield serializers.serialize(
-        object.mediaUrls,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
     if (object.mediaUrlsV2 != null) {
@@ -183,13 +170,6 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
             specifiedType: const FullType(String),
           ) as String;
           result.content = valueDes;
-          break;
-        case r'media_urls':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.mediaUrls.replace(valueDes);
           break;
         case r'media_urls_v2':
           final valueDes = serializers.deserialize(

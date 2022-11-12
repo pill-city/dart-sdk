@@ -16,8 +16,6 @@ class _$PostResharedFrom extends PostResharedFrom {
   @override
   final String? content;
   @override
-  final BuiltList<String>? mediaUrls;
-  @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
   final ResharedPostPoll? poll;
@@ -33,7 +31,6 @@ class _$PostResharedFrom extends PostResharedFrom {
       required this.createdAtSeconds,
       required this.author,
       this.content,
-      this.mediaUrls,
       this.mediaUrlsV2,
       this.poll,
       this.deleted})
@@ -61,7 +58,6 @@ class _$PostResharedFrom extends PostResharedFrom {
         createdAtSeconds == other.createdAtSeconds &&
         author == other.author &&
         content == other.content &&
-        mediaUrls == other.mediaUrls &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
         poll == other.poll &&
         deleted == other.deleted;
@@ -73,11 +69,9 @@ class _$PostResharedFrom extends PostResharedFrom {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
-                            author.hashCode),
-                        content.hashCode),
-                    mediaUrls.hashCode),
+                    $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
+                        author.hashCode),
+                    content.hashCode),
                 mediaUrlsV2.hashCode),
             poll.hashCode),
         deleted.hashCode));
@@ -90,7 +84,6 @@ class _$PostResharedFrom extends PostResharedFrom {
           ..add('createdAtSeconds', createdAtSeconds)
           ..add('author', author)
           ..add('content', content)
-          ..add('mediaUrls', mediaUrls)
           ..add('mediaUrlsV2', mediaUrlsV2)
           ..add('poll', poll)
           ..add('deleted', deleted))
@@ -121,12 +114,6 @@ class PostResharedFromBuilder
   String? get content => _$this._content;
   set content(covariant String? content) => _$this._content = content;
 
-  ListBuilder<String>? _mediaUrls;
-  ListBuilder<String> get mediaUrls =>
-      _$this._mediaUrls ??= new ListBuilder<String>();
-  set mediaUrls(covariant ListBuilder<String>? mediaUrls) =>
-      _$this._mediaUrls = mediaUrls;
-
   ListBuilder<MediaUrlV2>? _mediaUrlsV2;
   ListBuilder<MediaUrlV2> get mediaUrlsV2 =>
       _$this._mediaUrlsV2 ??= new ListBuilder<MediaUrlV2>();
@@ -153,7 +140,6 @@ class PostResharedFromBuilder
       _createdAtSeconds = $v.createdAtSeconds;
       _author = $v.author.toBuilder();
       _content = $v.content;
-      _mediaUrls = $v.mediaUrls?.toBuilder();
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
       _poll = $v.poll?.toBuilder();
       _deleted = $v.deleted;
@@ -187,7 +173,6 @@ class PostResharedFromBuilder
                   createdAtSeconds, r'PostResharedFrom', 'createdAtSeconds'),
               author: author.build(),
               content: content,
-              mediaUrls: _mediaUrls?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
               poll: _poll?.build(),
               deleted: deleted);
@@ -197,8 +182,6 @@ class PostResharedFromBuilder
         _$failedField = 'author';
         author.build();
 
-        _$failedField = 'mediaUrls';
-        _mediaUrls?.build();
         _$failedField = 'mediaUrlsV2';
         _mediaUrlsV2?.build();
         _$failedField = 'poll';

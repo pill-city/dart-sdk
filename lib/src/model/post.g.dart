@@ -22,8 +22,6 @@ class _$Post extends Post {
   @override
   final PostResharedFrom? resharedFrom;
   @override
-  final BuiltList<String>? mediaUrls;
-  @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
   final BuiltList<Reaction>? reactions;
@@ -53,7 +51,6 @@ class _$Post extends Post {
       required this.isPublic,
       this.reshareable,
       this.resharedFrom,
-      this.mediaUrls,
       this.mediaUrlsV2,
       this.reactions,
       this.comments,
@@ -89,7 +86,6 @@ class _$Post extends Post {
         isPublic == other.isPublic &&
         reshareable == other.reshareable &&
         resharedFrom == other.resharedFrom &&
-        mediaUrls == other.mediaUrls &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
         reactions == other.reactions &&
         comments == other.comments &&
@@ -119,19 +115,16 @@ class _$Post extends Post {
                                                         $jc(
                                                             $jc(
                                                                 $jc(
-                                                                    $jc(
-                                                                        0,
-                                                                        id
-                                                                            .hashCode),
-                                                                    createdAtSeconds
+                                                                    0,
+                                                                    id
                                                                         .hashCode),
-                                                                author
+                                                                createdAtSeconds
                                                                     .hashCode),
-                                                            content.hashCode),
-                                                        isPublic.hashCode),
-                                                    reshareable.hashCode),
-                                                resharedFrom.hashCode),
-                                            mediaUrls.hashCode),
+                                                            author.hashCode),
+                                                        content.hashCode),
+                                                    isPublic.hashCode),
+                                                reshareable.hashCode),
+                                            resharedFrom.hashCode),
                                         mediaUrlsV2.hashCode),
                                     reactions.hashCode),
                                 comments.hashCode),
@@ -153,7 +146,6 @@ class _$Post extends Post {
           ..add('isPublic', isPublic)
           ..add('reshareable', reshareable)
           ..add('resharedFrom', resharedFrom)
-          ..add('mediaUrls', mediaUrls)
           ..add('mediaUrlsV2', mediaUrlsV2)
           ..add('reactions', reactions)
           ..add('comments', comments)
@@ -200,12 +192,6 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       _$this._resharedFrom ??= new PostResharedFromBuilder();
   set resharedFrom(PostResharedFromBuilder? resharedFrom) =>
       _$this._resharedFrom = resharedFrom;
-
-  ListBuilder<String>? _mediaUrls;
-  ListBuilder<String> get mediaUrls =>
-      _$this._mediaUrls ??= new ListBuilder<String>();
-  set mediaUrls(ListBuilder<String>? mediaUrls) =>
-      _$this._mediaUrls = mediaUrls;
 
   ListBuilder<MediaUrlV2>? _mediaUrlsV2;
   ListBuilder<MediaUrlV2> get mediaUrlsV2 =>
@@ -268,7 +254,6 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       _isPublic = $v.isPublic;
       _reshareable = $v.reshareable;
       _resharedFrom = $v.resharedFrom?.toBuilder();
-      _mediaUrls = $v.mediaUrls?.toBuilder();
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
       _reactions = $v.reactions?.toBuilder();
       _comments = $v.comments?.toBuilder();
@@ -311,7 +296,6 @@ class PostBuilder implements Builder<Post, PostBuilder> {
                   isPublic, r'Post', 'isPublic'),
               reshareable: reshareable,
               resharedFrom: _resharedFrom?.build(),
-              mediaUrls: _mediaUrls?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
               reactions: _reactions?.build(),
               comments: _comments?.build(),
@@ -329,8 +313,6 @@ class PostBuilder implements Builder<Post, PostBuilder> {
 
         _$failedField = 'resharedFrom';
         _resharedFrom?.build();
-        _$failedField = 'mediaUrls';
-        _mediaUrls?.build();
         _$failedField = 'mediaUrlsV2';
         _mediaUrlsV2?.build();
         _$failedField = 'reactions';

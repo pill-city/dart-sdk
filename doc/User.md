@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The permanent short ID for the user | 
 **createdAtSeconds** | **num** | In epoch seconds, when the user signed up | 
-**avatarUrl** | **String** | URL to the user's avatar | [optional] 
 **avatarUrlV2** | [**MediaUrlV2**](MediaUrlV2.md) |  | [optional] 
 **profilePic** | **String** | User's choice of profile banner. The choices are defined on web frontend. | [optional] [default to 'pill1.png']
 **displayName** | **String** | User's displayed/regular name. Can be changed. | [optional] 
