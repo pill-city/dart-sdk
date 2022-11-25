@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getHome**](CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
 [**getMe**](CoreApi.md#getme) | **GET** /me | Get the logged in user
 [**getPlugins**](CoreApi.md#getplugins) | **GET** /plugins | Get plugins enabled by the user
+[**getPost**](CoreApi.md#getpost) | **GET** /post/{postId} | Get a post by its ID
 [**signIn**](CoreApi.md#signin) | **POST** /signIn | Sign in
 
 
@@ -167,6 +168,50 @@ This endpoint does not need any parameter.
 ### Return type
 
 **BuiltList&lt;String&gt;**
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPost**
+> Post getPost(postId)
+
+Get a post by its ID
+
+### Example
+```dart
+import 'package:pill_city/api.dart';
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+
+final api = PillCity().getCoreApi();
+final String postId = postId_example; // String | Post ID
+
+try {
+    final response = api.getPost(postId);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling CoreApi->getPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postId** | **String**| Post ID | 
+
+### Return type
+
+[**Post**](Post.md)
 
 ### Authorization
 

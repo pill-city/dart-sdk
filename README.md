@@ -67,6 +67,7 @@ Class | Method | HTTP request | Description
 [*CoreApi*](doc/CoreApi.md) | [**getHome**](doc/CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
 [*CoreApi*](doc/CoreApi.md) | [**getMe**](doc/CoreApi.md#getme) | **GET** /me | Get the logged in user
 [*CoreApi*](doc/CoreApi.md) | [**getPlugins**](doc/CoreApi.md#getplugins) | **GET** /plugins | Get plugins enabled by the user
+[*CoreApi*](doc/CoreApi.md) | [**getPost**](doc/CoreApi.md#getpost) | **GET** /post/{postId} | Get a post by its ID
 [*CoreApi*](doc/CoreApi.md) | [**signIn**](doc/CoreApi.md#signin) | **POST** /signIn | Sign in
 [*PluginsApi*](doc/PluginsApi.md) | [**getEmoticons**](doc/PluginsApi.md#getemoticons) | **GET** /plugin/cloudemoticon/emoticons | Get emoticons
 

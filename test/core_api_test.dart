@@ -35,6 +35,13 @@ void main() {
       // TODO
     });
 
+    // Get a post by its ID
+    //
+    //Future<Post> getPost(String postId) async
+    test('test getPost', () async {
+      // TODO
+    });
+
     // Sign in
     //
     //Future<SignIn200Response> signIn({ SignInRequest signInRequest }) async
