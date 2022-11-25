@@ -21,6 +21,7 @@ part 'nested_comment.g.dart';
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [deleted] - Whether the nested comment is deleted
 /// * [blocked] - Whether the nested comment's author is blocked
+/// * [replyToCommentId] - The ID of the comment that this comment is replying to
 @BuiltValue()
 abstract class NestedComment implements Built<NestedComment, NestedCommentBuilder> {
   /// Permanent ID for the nested comment
@@ -50,6 +51,10 @@ abstract class NestedComment implements Built<NestedComment, NestedCommentBuilde
   @BuiltValueField(wireName: r'blocked')
   bool? get blocked;
 
+  /// The ID of the comment that this comment is replying to
+  @BuiltValueField(wireName: r'reply_to_comment_id')
+  String? get replyToCommentId;
+
   NestedComment._();
 
   factory NestedComment([void updates(NestedCommentBuilder b)]) = _$NestedComment;
@@ -59,7 +64,8 @@ abstract class NestedComment implements Built<NestedComment, NestedCommentBuilde
       ..content = ''
       ..mediaUrlsV2 = ListBuilder()
       ..deleted = false
-      ..blocked = false;
+      ..blocked = false
+      ..replyToCommentId = 'false';
 
   @BuiltValueSerializer(custom: true)
   static Serializer<NestedComment> get serializer => _$NestedCommentSerializer();
@@ -118,6 +124,13 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
       yield serializers.serialize(
         object.blocked,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.replyToCommentId != null) {
+      yield r'reply_to_comment_id';
+      yield serializers.serialize(
+        object.replyToCommentId,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -191,6 +204,13 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
             specifiedType: const FullType(bool),
           ) as bool;
           result.blocked = valueDes;
+          break;
+        case r'reply_to_comment_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.replyToCommentId = valueDes;
           break;
         default:
           unhandled.add(key);

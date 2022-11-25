@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **mediaUrlsV2** | [**BuiltList&lt;MediaUrlV2&gt;**](MediaUrlV2.md) | v2 media URLs for the comment's media | [optional] [default to ListBuilder()]
 **deleted** | **bool** | Whether the nested comment is deleted | [optional] [default to false]
 **blocked** | **bool** | Whether the nested comment's author is blocked | [optional] [default to false]
+**replyToCommentId** | **String** | The ID of the comment that this comment is replying to | [optional] [default to 'false']
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

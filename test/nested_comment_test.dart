@@ -48,5 +48,11 @@ void main() {
       // TODO
     });
 
+    // The ID of the comment that this comment is replying to
+    // String replyToCommentId (default value: 'false')
+    test('to test the property `replyToCommentId`', () async {
+      // TODO
+    });
+
   });
 }

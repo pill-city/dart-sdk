@@ -21,6 +21,8 @@ class _$NestedComment extends NestedComment {
   final bool? deleted;
   @override
   final bool? blocked;
+  @override
+  final String? replyToCommentId;
 
   factory _$NestedComment([void Function(NestedCommentBuilder)? updates]) =>
       (new NestedCommentBuilder()..update(updates))._build();
@@ -32,7 +34,8 @@ class _$NestedComment extends NestedComment {
       this.content,
       this.mediaUrlsV2,
       this.deleted,
-      this.blocked})
+      this.blocked,
+      this.replyToCommentId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'NestedComment', 'id');
     BuiltValueNullFieldError.checkNotNull(
@@ -57,7 +60,8 @@ class _$NestedComment extends NestedComment {
         content == other.content &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
         deleted == other.deleted &&
-        blocked == other.blocked;
+        blocked == other.blocked &&
+        replyToCommentId == other.replyToCommentId;
   }
 
   @override
@@ -66,12 +70,14 @@ class _$NestedComment extends NestedComment {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
-                        author.hashCode),
-                    content.hashCode),
-                mediaUrlsV2.hashCode),
-            deleted.hashCode),
-        blocked.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
+                            author.hashCode),
+                        content.hashCode),
+                    mediaUrlsV2.hashCode),
+                deleted.hashCode),
+            blocked.hashCode),
+        replyToCommentId.hashCode));
   }
 
   @override
@@ -83,7 +89,8 @@ class _$NestedComment extends NestedComment {
           ..add('content', content)
           ..add('mediaUrlsV2', mediaUrlsV2)
           ..add('deleted', deleted)
-          ..add('blocked', blocked))
+          ..add('blocked', blocked)
+          ..add('replyToCommentId', replyToCommentId))
         .toString();
   }
 }
@@ -123,6 +130,11 @@ class NestedCommentBuilder
   bool? get blocked => _$this._blocked;
   set blocked(bool? blocked) => _$this._blocked = blocked;
 
+  String? _replyToCommentId;
+  String? get replyToCommentId => _$this._replyToCommentId;
+  set replyToCommentId(String? replyToCommentId) =>
+      _$this._replyToCommentId = replyToCommentId;
+
   NestedCommentBuilder() {
     NestedComment._defaults(this);
   }
@@ -137,6 +149,7 @@ class NestedCommentBuilder
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
       _deleted = $v.deleted;
       _blocked = $v.blocked;
+      _replyToCommentId = $v.replyToCommentId;
       _$v = null;
     }
     return this;
@@ -169,7 +182,8 @@ class NestedCommentBuilder
               content: content,
               mediaUrlsV2: _mediaUrlsV2?.build(),
               deleted: deleted,
-              blocked: blocked);
+              blocked: blocked,
+              replyToCommentId: replyToCommentId);
     } catch (_) {
       late String _$failedField;
       try {
