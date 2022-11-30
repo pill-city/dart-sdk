@@ -11,13 +11,17 @@ class _$Circle extends Circle {
   final String id;
   @override
   final String name;
+  @override
+  final BuiltList<User> members;
 
   factory _$Circle([void Function(CircleBuilder)? updates]) =>
       (new CircleBuilder()..update(updates))._build();
 
-  _$Circle._({required this.id, required this.name}) : super._() {
+  _$Circle._({required this.id, required this.name, required this.members})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'Circle', 'id');
     BuiltValueNullFieldError.checkNotNull(name, r'Circle', 'name');
+    BuiltValueNullFieldError.checkNotNull(members, r'Circle', 'members');
   }
 
   @override
@@ -30,19 +34,23 @@ class _$Circle extends Circle {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Circle && id == other.id && name == other.name;
+    return other is Circle &&
+        id == other.id &&
+        name == other.name &&
+        members == other.members;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, id.hashCode), name.hashCode));
+    return $jf($jc($jc($jc(0, id.hashCode), name.hashCode), members.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'Circle')
           ..add('id', id)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('members', members))
         .toString();
   }
 }
@@ -58,6 +66,10 @@ class CircleBuilder implements Builder<Circle, CircleBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  ListBuilder<User>? _members;
+  ListBuilder<User> get members => _$this._members ??= new ListBuilder<User>();
+  set members(ListBuilder<User>? members) => _$this._members = members;
+
   CircleBuilder() {
     Circle._defaults(this);
   }
@@ -67,6 +79,7 @@ class CircleBuilder implements Builder<Circle, CircleBuilder> {
     if ($v != null) {
       _id = $v.id;
       _name = $v.name;
+      _members = $v.members.toBuilder();
       _$v = null;
     }
     return this;
@@ -87,11 +100,25 @@ class CircleBuilder implements Builder<Circle, CircleBuilder> {
   Circle build() => _build();
 
   _$Circle _build() {
-    final _$result = _$v ??
-        new _$Circle._(
-            id: BuiltValueNullFieldError.checkNotNull(id, r'Circle', 'id'),
-            name:
-                BuiltValueNullFieldError.checkNotNull(name, r'Circle', 'name'));
+    _$Circle _$result;
+    try {
+      _$result = _$v ??
+          new _$Circle._(
+              id: BuiltValueNullFieldError.checkNotNull(id, r'Circle', 'id'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'Circle', 'name'),
+              members: members.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'Circle', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

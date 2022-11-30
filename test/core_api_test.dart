@@ -21,6 +21,13 @@ void main() {
       // TODO
     });
 
+    // Get a user's circles
+    //
+    //Future<BuiltList<Circle>> getCircles() async
+    test('test getCircles', () async {
+      // TODO
+    });
+
     // Get or poll latest home posts
     //
     //Future<BuiltList<Post>> getHome({ String toId, String fromId }) async

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createPost**](CoreApi.md#createpost) | **POST** /posts | Create a new post
 [**getAvailablePlugins**](CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
+[**getCircles**](CoreApi.md#getcircles) | **GET** /circles | Get a user&#39;s circles
 [**getHome**](CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
 [**getMe**](CoreApi.md#getme) | **GET** /me | Get the logged in user
 [**getPlugins**](CoreApi.md#getplugins) | **GET** /plugins | Get plugins enabled by the user
@@ -91,6 +92,46 @@ This endpoint does not need any parameter.
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCircles**
+> BuiltList<Circle> getCircles()
+
+Get a user's circles
+
+### Example
+```dart
+import 'package:pill_city/api.dart';
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+
+final api = PillCity().getCoreApi();
+
+try {
+    final response = api.getCircles();
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling CoreApi->getCircles: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BuiltList&lt;Circle&gt;**](Circle.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

@@ -19,5 +19,11 @@ void main() {
       // TODO
     });
 
+    // Members of the circle
+    // BuiltList<User> members
+    test('to test the property `members`', () async {
+      // TODO
+    });
+
   });
 }

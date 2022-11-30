@@ -3,6 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
+import 'package:pill_city/src/model/user.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,6 +15,7 @@ part 'circle.g.dart';
 /// Properties:
 /// * [id] - Permanent ID for the circle
 /// * [name] - Circle name
+/// * [members] - Members of the circle
 @BuiltValue()
 abstract class Circle implements Built<Circle, CircleBuilder> {
   /// Permanent ID for the circle
@@ -22,6 +25,10 @@ abstract class Circle implements Built<Circle, CircleBuilder> {
   /// Circle name
   @BuiltValueField(wireName: r'name')
   String get name;
+
+  /// Members of the circle
+  @BuiltValueField(wireName: r'members')
+  BuiltList<User> get members;
 
   Circle._();
 
@@ -55,6 +62,11 @@ class _$CircleSerializer implements PrimitiveSerializer<Circle> {
     yield serializers.serialize(
       object.name,
       specifiedType: const FullType(String),
+    );
+    yield r'members';
+    yield serializers.serialize(
+      object.members,
+      specifiedType: const FullType(BuiltList, [FullType(User)]),
     );
   }
 
@@ -92,6 +104,13 @@ class _$CircleSerializer implements PrimitiveSerializer<Circle> {
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'members':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(User)]),
+          ) as BuiltList<User>;
+          result.members.replace(valueDes);
           break;
         default:
           unhandled.add(key);

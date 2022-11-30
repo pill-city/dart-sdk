@@ -66,6 +66,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*CoreApi*](doc/CoreApi.md) | [**createPost**](doc/CoreApi.md#createpost) | **POST** /posts | Create a new post
 [*CoreApi*](doc/CoreApi.md) | [**getAvailablePlugins**](doc/CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
+[*CoreApi*](doc/CoreApi.md) | [**getCircles**](doc/CoreApi.md#getcircles) | **GET** /circles | Get a user&#39;s circles
 [*CoreApi*](doc/CoreApi.md) | [**getHome**](doc/CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
 [*CoreApi*](doc/CoreApi.md) | [**getMe**](doc/CoreApi.md#getme) | **GET** /me | Get the logged in user
 [*CoreApi*](doc/CoreApi.md) | [**getPlugins**](doc/CoreApi.md#getplugins) | **GET** /plugins | Get plugins enabled by the user
