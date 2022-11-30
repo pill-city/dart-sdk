@@ -20,6 +20,7 @@ import 'package:pill_city/src/model/cloud_emoticon_category.dart';
 import 'package:pill_city/src/model/cloud_emoticon_entry.dart';
 import 'package:pill_city/src/model/cloud_emoticon_repo.dart';
 import 'package:pill_city/src/model/comment.dart';
+import 'package:pill_city/src/model/create_post_request.dart';
 import 'package:pill_city/src/model/link_preview.dart';
 import 'package:pill_city/src/model/media_url_v2.dart';
 import 'package:pill_city/src/model/message.dart';
@@ -44,6 +45,7 @@ part 'serializers.g.dart';
   CloudEmoticonEntry,
   CloudEmoticonRepo,
   Comment,
+  CreatePostRequest,
   LinkPreview,
   MediaUrlV2,
   Message,

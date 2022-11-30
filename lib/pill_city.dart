@@ -18,6 +18,7 @@ export 'package:pill_city/src/model/cloud_emoticon_category.dart';
 export 'package:pill_city/src/model/cloud_emoticon_entry.dart';
 export 'package:pill_city/src/model/cloud_emoticon_repo.dart';
 export 'package:pill_city/src/model/comment.dart';
+export 'package:pill_city/src/model/create_post_request.dart';
 export 'package:pill_city/src/model/link_preview.dart';
 export 'package:pill_city/src/model/media_url_v2.dart';
 export 'package:pill_city/src/model/message.dart';

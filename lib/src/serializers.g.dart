@@ -15,6 +15,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CloudEmoticonEntry.serializer)
       ..add(CloudEmoticonRepo.serializer)
       ..add(Comment.serializer)
+      ..add(CreatePostRequest.serializer)
       ..add(LinkPreview.serializer)
       ..add(LinkPreviewStateEnum.serializer)
       ..add(MediaUrlV2.serializer)
@@ -74,6 +75,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PollChoice)]),
           () => new ListBuilder<PollChoice>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

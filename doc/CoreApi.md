@@ -9,6 +9,7 @@ All URIs are relative to *https://api.pill.city/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createPost**](CoreApi.md#createpost) | **POST** /posts | Create a new post
 [**getAvailablePlugins**](CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
 [**getHome**](CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
 [**getMe**](CoreApi.md#getme) | **GET** /me | Get the logged in user
@@ -16,6 +17,50 @@ Method | HTTP request | Description
 [**getPost**](CoreApi.md#getpost) | **GET** /post/{postId} | Get a post by its ID
 [**signIn**](CoreApi.md#signin) | **POST** /signIn | Sign in
 
+
+# **createPost**
+> Post createPost(createPostRequest)
+
+Create a new post
+
+### Example
+```dart
+import 'package:pill_city/api.dart';
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+
+final api = PillCity().getCoreApi();
+final CreatePostRequest createPostRequest = ; // CreatePostRequest | 
+
+try {
+    final response = api.createPost(createPostRequest);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling CoreApi->createPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPostRequest** | [**CreatePostRequest**](CreatePostRequest.md)|  | [optional] 
+
+### Return type
+
+[**Post**](Post.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAvailablePlugins**
 > BuiltList<String> getAvailablePlugins()

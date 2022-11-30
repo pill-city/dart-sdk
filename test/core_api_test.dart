@@ -7,6 +7,13 @@ void main() {
   final instance = PillCity().getCoreApi();
 
   group(CoreApi, () {
+    // Create a new post
+    //
+    //Future<Post> createPost({ CreatePostRequest createPostRequest }) async
+    test('test createPost', () async {
+      // TODO
+    });
+
     // Get all available plugins
     //
     //Future<BuiltList<String>> getAvailablePlugins() async

@@ -47,12 +47,13 @@ import 'package:pill_city/pill_city.dart';
 
 
 final api = PillCity().getCoreApi();
+final CreatePostRequest createPostRequest = ; // CreatePostRequest | 
 
 try {
-    final response = await api.getAvailablePlugins();
+    final response = await api.createPost(createPostRequest);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling CoreApi->getAvailablePlugins: $e\n");
+    print("Exception when calling CoreApi->createPost: $e\n");
 }
 
 ```
@@ -63,6 +64,7 @@ All URIs are relative to *https://api.pill.city/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*CoreApi*](doc/CoreApi.md) | [**createPost**](doc/CoreApi.md#createpost) | **POST** /posts | Create a new post
 [*CoreApi*](doc/CoreApi.md) | [**getAvailablePlugins**](doc/CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
 [*CoreApi*](doc/CoreApi.md) | [**getHome**](doc/CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
 [*CoreApi*](doc/CoreApi.md) | [**getMe**](doc/CoreApi.md#getme) | **GET** /me | Get the logged in user
@@ -80,6 +82,7 @@ Class | Method | HTTP request | Description
  - [CloudEmoticonEntry](doc/CloudEmoticonEntry.md)
  - [CloudEmoticonRepo](doc/CloudEmoticonRepo.md)
  - [Comment](doc/Comment.md)
+ - [CreatePostRequest](doc/CreatePostRequest.md)
  - [LinkPreview](doc/LinkPreview.md)
  - [MediaUrlV2](doc/MediaUrlV2.md)
  - [Message](doc/Message.md)
