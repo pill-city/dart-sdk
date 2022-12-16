@@ -30,6 +30,11 @@ void main() {
       // TODO
     });
 
+    // FormattedContent formattedContent
+    test('to test the property `formattedContent`', () async {
+      // TODO
+    });
+
     // v2 media URLs for the comment's media
     // BuiltList<MediaUrlV2> mediaUrlsV2 (default value: ListBuilder())
     test('to test the property `mediaUrlsV2`', () async {

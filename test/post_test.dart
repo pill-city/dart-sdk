@@ -30,6 +30,11 @@ void main() {
       // TODO
     });
 
+    // FormattedContent formattedContent
+    test('to test the property `formattedContent`', () async {
+      // TODO
+    });
+
     // Whether the post is publicly accessible on the server
     // bool isPublic
     test('to test the property `isPublic`', () async {

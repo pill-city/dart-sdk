@@ -10,6 +10,8 @@ doc/CloudEmoticonRepo.md
 doc/Comment.md
 doc/CoreApi.md
 doc/CreatePostRequest.md
+doc/FormattedContent.md
+doc/FormattedContentSegment.md
 doc/LinkPreview.md
 doc/MediaUrlV2.md
 doc/Message.md
@@ -44,6 +46,8 @@ lib/src/model/cloud_emoticon_repo.dart
 lib/src/model/comment.dart
 lib/src/model/create_post_request.dart
 lib/src/model/date.dart
+lib/src/model/formatted_content.dart
+lib/src/model/formatted_content_segment.dart
 lib/src/model/link_preview.dart
 lib/src/model/media_url_v2.dart
 lib/src/model/message.dart
@@ -68,6 +72,8 @@ test/cloud_emoticon_repo_test.dart
 test/comment_test.dart
 test/core_api_test.dart
 test/create_post_request_test.dart
+test/formatted_content_segment_test.dart
+test/formatted_content_test.dart
 test/link_preview_test.dart
 test/media_url_v2_test.dart
 test/message_test.dart

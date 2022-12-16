@@ -84,6 +84,8 @@ Class | Method | HTTP request | Description
  - [CloudEmoticonRepo](doc/CloudEmoticonRepo.md)
  - [Comment](doc/Comment.md)
  - [CreatePostRequest](doc/CreatePostRequest.md)
+ - [FormattedContent](doc/FormattedContent.md)
+ - [FormattedContentSegment](doc/FormattedContentSegment.md)
  - [LinkPreview](doc/LinkPreview.md)
  - [MediaUrlV2](doc/MediaUrlV2.md)
  - [Message](doc/Message.md)

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **createdAtSeconds** | **num** | In epoch seconds, when the post was created | 
 **author** | [**User**](User.md) |  | 
 **content** | **String** | Text content for the post | [optional] [default to '']
+**formattedContent** | [**FormattedContent**](FormattedContent.md) |  | [optional] 
 **isPublic** | **bool** | Whether the post is publicly accessible on the server | 
 **reshareable** | **bool** | Whether the post is publicly reshareable on the server | [optional] [default to false]
 **resharedFrom** | [**PostResharedFrom**](PostResharedFrom.md) |  | [optional] 

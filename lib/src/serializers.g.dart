@@ -16,6 +16,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CloudEmoticonRepo.serializer)
       ..add(Comment.serializer)
       ..add(CreatePostRequest.serializer)
+      ..add(FormattedContent.serializer)
+      ..add(FormattedContentSegment.serializer)
+      ..add(FormattedContentSegmentTypesEnum.serializer)
       ..add(LinkPreview.serializer)
       ..add(LinkPreviewStateEnum.serializer)
       ..add(MediaUrlV2.serializer)
@@ -39,6 +42,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CloudEmoticonEntry)]),
           () => new ListBuilder<CloudEmoticonEntry>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(FormattedContentSegment)]),
+          () => new ListBuilder<FormattedContentSegment>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(FormattedContentSegmentTypesEnum)]),
+          () => new ListBuilder<FormattedContentSegmentTypesEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
           () => new ListBuilder<MediaUrlV2>())

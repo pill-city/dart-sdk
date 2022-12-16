@@ -7,6 +7,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:pill_city/src/model/media_url_v2.dart';
 import 'package:pill_city/src/model/reshared_post.dart';
 import 'package:pill_city/src/model/reshared_post_poll.dart';
+import 'package:pill_city/src/model/formatted_content.dart';
 import 'package:pill_city/src/model/user.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,6 +21,7 @@ part 'post_reshared_from.g.dart';
 /// * [createdAtSeconds] - In epoch seconds, when the reshared post was created
 /// * [author] 
 /// * [content] - Text content for the reshared post
+/// * [formattedContent] 
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [poll] 
 /// * [deleted] - Whether the reshared post is deleted
@@ -51,6 +53,13 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
     PostResharedFrom object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.formattedContent != null) {
+      yield r'formatted_content';
+      yield serializers.serialize(
+        object.formattedContent,
+        specifiedType: const FullType(FormattedContent),
+      );
+    }
     if (object.deleted != null) {
       yield r'deleted';
       yield serializers.serialize(
@@ -117,6 +126,13 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'formatted_content':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(FormattedContent),
+          ) as FormattedContent;
+          result.formattedContent.replace(valueDes);
+          break;
         case r'deleted':
           final valueDes = serializers.deserialize(
             value,

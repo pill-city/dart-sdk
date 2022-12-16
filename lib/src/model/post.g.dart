@@ -16,6 +16,8 @@ class _$Post extends Post {
   @override
   final String? content;
   @override
+  final FormattedContent? formattedContent;
+  @override
   final bool isPublic;
   @override
   final bool? reshareable;
@@ -48,6 +50,7 @@ class _$Post extends Post {
       required this.createdAtSeconds,
       required this.author,
       this.content,
+      this.formattedContent,
       required this.isPublic,
       this.reshareable,
       this.resharedFrom,
@@ -83,6 +86,7 @@ class _$Post extends Post {
         createdAtSeconds == other.createdAtSeconds &&
         author == other.author &&
         content == other.content &&
+        formattedContent == other.formattedContent &&
         isPublic == other.isPublic &&
         reshareable == other.reshareable &&
         resharedFrom == other.resharedFrom &&
@@ -115,13 +119,17 @@ class _$Post extends Post {
                                                         $jc(
                                                             $jc(
                                                                 $jc(
-                                                                    0,
-                                                                    id
+                                                                    $jc(
+                                                                        0,
+                                                                        id
+                                                                            .hashCode),
+                                                                    createdAtSeconds
                                                                         .hashCode),
-                                                                createdAtSeconds
+                                                                author
                                                                     .hashCode),
-                                                            author.hashCode),
-                                                        content.hashCode),
+                                                            content.hashCode),
+                                                        formattedContent
+                                                            .hashCode),
                                                     isPublic.hashCode),
                                                 reshareable.hashCode),
                                             resharedFrom.hashCode),
@@ -143,6 +151,7 @@ class _$Post extends Post {
           ..add('createdAtSeconds', createdAtSeconds)
           ..add('author', author)
           ..add('content', content)
+          ..add('formattedContent', formattedContent)
           ..add('isPublic', isPublic)
           ..add('reshareable', reshareable)
           ..add('resharedFrom', resharedFrom)
@@ -178,6 +187,12 @@ class PostBuilder implements Builder<Post, PostBuilder> {
   String? _content;
   String? get content => _$this._content;
   set content(String? content) => _$this._content = content;
+
+  FormattedContentBuilder? _formattedContent;
+  FormattedContentBuilder get formattedContent =>
+      _$this._formattedContent ??= new FormattedContentBuilder();
+  set formattedContent(FormattedContentBuilder? formattedContent) =>
+      _$this._formattedContent = formattedContent;
 
   bool? _isPublic;
   bool? get isPublic => _$this._isPublic;
@@ -251,6 +266,7 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       _createdAtSeconds = $v.createdAtSeconds;
       _author = $v.author.toBuilder();
       _content = $v.content;
+      _formattedContent = $v.formattedContent?.toBuilder();
       _isPublic = $v.isPublic;
       _reshareable = $v.reshareable;
       _resharedFrom = $v.resharedFrom?.toBuilder();
@@ -292,6 +308,7 @@ class PostBuilder implements Builder<Post, PostBuilder> {
                   createdAtSeconds, r'Post', 'createdAtSeconds'),
               author: author.build(),
               content: content,
+              formattedContent: _formattedContent?.build(),
               isPublic: BuiltValueNullFieldError.checkNotNull(
                   isPublic, r'Post', 'isPublic'),
               reshareable: reshareable,
@@ -310,6 +327,9 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       try {
         _$failedField = 'author';
         author.build();
+
+        _$failedField = 'formattedContent';
+        _formattedContent?.build();
 
         _$failedField = 'resharedFrom';
         _resharedFrom?.build();

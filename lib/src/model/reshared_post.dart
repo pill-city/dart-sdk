@@ -6,6 +6,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:pill_city/src/model/media_url_v2.dart';
 import 'package:pill_city/src/model/reshared_post_poll.dart';
+import 'package:pill_city/src/model/formatted_content.dart';
 import 'package:pill_city/src/model/user.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -19,6 +20,7 @@ part 'reshared_post.g.dart';
 /// * [createdAtSeconds] - In epoch seconds, when the reshared post was created
 /// * [author] 
 /// * [content] - Text content for the reshared post
+/// * [formattedContent] 
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [poll] 
 /// * [deleted] - Whether the reshared post is deleted
@@ -38,6 +40,9 @@ abstract class ResharedPost  {
   /// Text content for the reshared post
   @BuiltValueField(wireName: r'content')
   String? get content;
+
+  @BuiltValueField(wireName: r'formatted_content')
+  FormattedContent? get formattedContent;
 
   /// v2 media URLs for the comment's media
   @BuiltValueField(wireName: r'media_urls_v2')
@@ -86,6 +91,13 @@ class _$ResharedPostSerializer implements PrimitiveSerializer<ResharedPost> {
       yield serializers.serialize(
         object.content,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.formattedContent != null) {
+      yield r'formatted_content';
+      yield serializers.serialize(
+        object.formattedContent,
+        specifiedType: const FullType(FormattedContent),
       );
     }
     if (object.mediaUrlsV2 != null) {
@@ -199,6 +211,13 @@ class _$$ResharedPostSerializer implements PrimitiveSerializer<$ResharedPost> {
             specifiedType: const FullType(String),
           ) as String;
           result.content = valueDes;
+          break;
+        case r'formatted_content':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(FormattedContent),
+          ) as FormattedContent;
+          result.formattedContent.replace(valueDes);
           break;
         case r'media_urls_v2':
           final valueDes = serializers.deserialize(

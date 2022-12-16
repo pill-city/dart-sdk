@@ -9,6 +9,7 @@ import 'package:pill_city/src/model/reaction.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:pill_city/src/model/media_url_v2.dart';
 import 'package:pill_city/src/model/reshared_post_poll.dart';
+import 'package:pill_city/src/model/formatted_content.dart';
 import 'package:pill_city/src/model/comment.dart';
 import 'package:pill_city/src/model/user.dart';
 import 'package:pill_city/src/model/link_preview.dart';
@@ -24,6 +25,7 @@ part 'post.g.dart';
 /// * [createdAtSeconds] - In epoch seconds, when the post was created
 /// * [author] 
 /// * [content] - Text content for the post
+/// * [formattedContent] 
 /// * [isPublic] - Whether the post is publicly accessible on the server
 /// * [reshareable] - Whether the post is publicly reshareable on the server
 /// * [resharedFrom] 
@@ -52,6 +54,9 @@ abstract class Post implements Built<Post, PostBuilder> {
   /// Text content for the post
   @BuiltValueField(wireName: r'content')
   String? get content;
+
+  @BuiltValueField(wireName: r'formatted_content')
+  FormattedContent? get formattedContent;
 
   /// Whether the post is publicly accessible on the server
   @BuiltValueField(wireName: r'is_public')
@@ -149,6 +154,13 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
       yield serializers.serialize(
         object.content,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.formattedContent != null) {
+      yield r'formatted_content';
+      yield serializers.serialize(
+        object.formattedContent,
+        specifiedType: const FullType(FormattedContent),
       );
     }
     yield r'is_public';
@@ -283,6 +295,13 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
             specifiedType: const FullType(String),
           ) as String;
           result.content = valueDes;
+          break;
+        case r'formatted_content':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(FormattedContent),
+          ) as FormattedContent;
+          result.formattedContent.replace(valueDes);
           break;
         case r'is_public':
           final valueDes = serializers.deserialize(
