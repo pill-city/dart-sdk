@@ -24,7 +24,7 @@ part 'post_reshared_from.g.dart';
 /// * [formattedContent] 
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [poll] 
-/// * [deleted] - Whether the reshared post is deleted
+/// * [state] - State of this entity that UI should show
 @BuiltValue()
 abstract class PostResharedFrom implements ResharedPost, Built<PostResharedFrom, PostResharedFromBuilder> {
   PostResharedFrom._();
@@ -33,7 +33,6 @@ abstract class PostResharedFrom implements ResharedPost, Built<PostResharedFrom,
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PostResharedFromBuilder b) => b
-      ..deleted = false
       ..mediaUrlsV2 = ListBuilder()
       ..content = '';
 
@@ -58,13 +57,6 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
       yield serializers.serialize(
         object.formattedContent,
         specifiedType: const FullType(FormattedContent),
-      );
-    }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
       );
     }
     yield r'author';
@@ -96,6 +88,11 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
         specifiedType: const FullType.nullable(ResharedPostPoll),
       );
     }
+    yield r'state';
+    yield serializers.serialize(
+      object.state,
+      specifiedType: const FullType(ResharedPostStateEnum),
+    );
     if (object.content != null) {
       yield r'content';
       yield serializers.serialize(
@@ -133,13 +130,6 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
           ) as FormattedContent;
           result.formattedContent.replace(valueDes);
           break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
         case r'author':
           final valueDes = serializers.deserialize(
             value,
@@ -176,6 +166,13 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
           if (valueDes == null) continue;
           result.poll.replace(valueDes);
           break;
+        case r'state':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(ResharedPostStateEnum),
+          ) as ResharedPostStateEnum;
+          result.state = valueDes;
+          break;
         case r'content':
           final valueDes = serializers.deserialize(
             value,
@@ -210,5 +207,28 @@ class _$PostResharedFromSerializer implements PrimitiveSerializer<PostResharedFr
     );
     return result.build();
   }
+}
+
+class PostResharedFromStateEnum extends EnumClass {
+
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'visible')
+  static const PostResharedFromStateEnum visible = _$postResharedFromStateEnum_visible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'invisible')
+  static const PostResharedFromStateEnum invisible = _$postResharedFromStateEnum_invisible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'author_blocked')
+  static const PostResharedFromStateEnum authorBlocked = _$postResharedFromStateEnum_authorBlocked;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'deleted')
+  static const PostResharedFromStateEnum deleted = _$postResharedFromStateEnum_deleted;
+
+  static Serializer<PostResharedFromStateEnum> get serializer => _$postResharedFromStateEnumSerializer;
+
+  const PostResharedFromStateEnum._(String name): super(name);
+
+  static BuiltSet<PostResharedFromStateEnum> get values => _$postResharedFromStateEnumValues;
+  static PostResharedFromStateEnum valueOf(String name) => _$postResharedFromStateEnumValueOf(name);
 }
 

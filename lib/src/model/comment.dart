@@ -22,9 +22,8 @@ part 'comment.g.dart';
 /// * [content] - Text content for the comment
 /// * [formattedContent] 
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
-/// * [deleted] - Whether the comment is deleted
-/// * [blocked] - Whether the comment's author is blocked
 /// * [comments] - Nested comments for the comment
+/// * [state] - State of this entity that UI should show
 @BuiltValue()
 abstract class Comment implements Built<Comment, CommentBuilder> {
   /// Permanent ID for the comment
@@ -49,17 +48,14 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   @BuiltValueField(wireName: r'media_urls_v2')
   BuiltList<MediaUrlV2>? get mediaUrlsV2;
 
-  /// Whether the comment is deleted
-  @BuiltValueField(wireName: r'deleted')
-  bool? get deleted;
-
-  /// Whether the comment's author is blocked
-  @BuiltValueField(wireName: r'blocked')
-  bool? get blocked;
-
   /// Nested comments for the comment
   @BuiltValueField(wireName: r'comments')
   BuiltList<NestedComment>? get comments;
+
+  /// State of this entity that UI should show
+  @BuiltValueField(wireName: r'state')
+  CommentStateEnum? get state;
+  // enum stateEnum {  visible,  invisible,  author_blocked,  deleted,  };
 
   Comment._();
 
@@ -68,9 +64,7 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CommentBuilder b) => b
       ..content = ''
-      ..mediaUrlsV2 = ListBuilder()
-      ..deleted = false
-      ..blocked = false;
+      ..mediaUrlsV2 = ListBuilder();
 
   @BuiltValueSerializer(custom: true)
   static Serializer<Comment> get serializer => _$CommentSerializer();
@@ -124,25 +118,18 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
         specifiedType: const FullType(BuiltList, [FullType(MediaUrlV2)]),
       );
     }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.blocked != null) {
-      yield r'blocked';
-      yield serializers.serialize(
-        object.blocked,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.comments != null) {
       yield r'comments';
       yield serializers.serialize(
         object.comments,
         specifiedType: const FullType(BuiltList, [FullType(NestedComment)]),
+      );
+    }
+    if (object.state != null) {
+      yield r'state';
+      yield serializers.serialize(
+        object.state,
+        specifiedType: const FullType(CommentStateEnum),
       );
     }
   }
@@ -210,26 +197,19 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
           ) as BuiltList<MediaUrlV2>;
           result.mediaUrlsV2.replace(valueDes);
           break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
-        case r'blocked':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.blocked = valueDes;
-          break;
         case r'comments':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(NestedComment)]),
           ) as BuiltList<NestedComment>;
           result.comments.replace(valueDes);
+          break;
+        case r'state':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CommentStateEnum),
+          ) as CommentStateEnum;
+          result.state = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -258,5 +238,28 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
     );
     return result.build();
   }
+}
+
+class CommentStateEnum extends EnumClass {
+
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'visible')
+  static const CommentStateEnum visible = _$commentStateEnum_visible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'invisible')
+  static const CommentStateEnum invisible = _$commentStateEnum_invisible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'author_blocked')
+  static const CommentStateEnum authorBlocked = _$commentStateEnum_authorBlocked;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'deleted')
+  static const CommentStateEnum deleted = _$commentStateEnum_deleted;
+
+  static Serializer<CommentStateEnum> get serializer => _$commentStateEnumSerializer;
+
+  const CommentStateEnum._(String name): super(name);
+
+  static BuiltSet<CommentStateEnum> get values => _$commentStateEnumValues;
+  static CommentStateEnum valueOf(String name) => _$commentStateEnumValueOf(name);
 }
 

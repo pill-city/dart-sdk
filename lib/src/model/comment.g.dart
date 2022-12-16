@@ -6,6 +6,73 @@ part of 'comment.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const CommentStateEnum _$commentStateEnum_visible =
+    const CommentStateEnum._('visible');
+const CommentStateEnum _$commentStateEnum_invisible =
+    const CommentStateEnum._('invisible');
+const CommentStateEnum _$commentStateEnum_authorBlocked =
+    const CommentStateEnum._('authorBlocked');
+const CommentStateEnum _$commentStateEnum_deleted =
+    const CommentStateEnum._('deleted');
+
+CommentStateEnum _$commentStateEnumValueOf(String name) {
+  switch (name) {
+    case 'visible':
+      return _$commentStateEnum_visible;
+    case 'invisible':
+      return _$commentStateEnum_invisible;
+    case 'authorBlocked':
+      return _$commentStateEnum_authorBlocked;
+    case 'deleted':
+      return _$commentStateEnum_deleted;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<CommentStateEnum> _$commentStateEnumValues =
+    new BuiltSet<CommentStateEnum>(const <CommentStateEnum>[
+  _$commentStateEnum_visible,
+  _$commentStateEnum_invisible,
+  _$commentStateEnum_authorBlocked,
+  _$commentStateEnum_deleted,
+]);
+
+Serializer<CommentStateEnum> _$commentStateEnumSerializer =
+    new _$CommentStateEnumSerializer();
+
+class _$CommentStateEnumSerializer
+    implements PrimitiveSerializer<CommentStateEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'authorBlocked': 'author_blocked',
+    'deleted': 'deleted',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'author_blocked': 'authorBlocked',
+    'deleted': 'deleted',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[CommentStateEnum];
+  @override
+  final String wireName = 'CommentStateEnum';
+
+  @override
+  Object serialize(Serializers serializers, CommentStateEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  CommentStateEnum deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      CommentStateEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$Comment extends Comment {
   @override
   final String id;
@@ -20,11 +87,9 @@ class _$Comment extends Comment {
   @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
-  final bool? deleted;
-  @override
-  final bool? blocked;
-  @override
   final BuiltList<NestedComment>? comments;
+  @override
+  final CommentStateEnum? state;
 
   factory _$Comment([void Function(CommentBuilder)? updates]) =>
       (new CommentBuilder()..update(updates))._build();
@@ -36,9 +101,8 @@ class _$Comment extends Comment {
       this.content,
       this.formattedContent,
       this.mediaUrlsV2,
-      this.deleted,
-      this.blocked,
-      this.comments})
+      this.comments,
+      this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'Comment', 'id');
     BuiltValueNullFieldError.checkNotNull(
@@ -63,9 +127,8 @@ class _$Comment extends Comment {
         content == other.content &&
         formattedContent == other.formattedContent &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
-        deleted == other.deleted &&
-        blocked == other.blocked &&
-        comments == other.comments;
+        comments == other.comments &&
+        state == other.state;
   }
 
   @override
@@ -75,17 +138,13 @@ class _$Comment extends Comment {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, id.hashCode),
-                                    createdAtSeconds.hashCode),
-                                author.hashCode),
-                            content.hashCode),
-                        formattedContent.hashCode),
-                    mediaUrlsV2.hashCode),
-                deleted.hashCode),
-            blocked.hashCode),
-        comments.hashCode));
+                        $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
+                            author.hashCode),
+                        content.hashCode),
+                    formattedContent.hashCode),
+                mediaUrlsV2.hashCode),
+            comments.hashCode),
+        state.hashCode));
   }
 
   @override
@@ -97,9 +156,8 @@ class _$Comment extends Comment {
           ..add('content', content)
           ..add('formattedContent', formattedContent)
           ..add('mediaUrlsV2', mediaUrlsV2)
-          ..add('deleted', deleted)
-          ..add('blocked', blocked)
-          ..add('comments', comments))
+          ..add('comments', comments)
+          ..add('state', state))
         .toString();
   }
 }
@@ -136,19 +194,15 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
   set mediaUrlsV2(ListBuilder<MediaUrlV2>? mediaUrlsV2) =>
       _$this._mediaUrlsV2 = mediaUrlsV2;
 
-  bool? _deleted;
-  bool? get deleted => _$this._deleted;
-  set deleted(bool? deleted) => _$this._deleted = deleted;
-
-  bool? _blocked;
-  bool? get blocked => _$this._blocked;
-  set blocked(bool? blocked) => _$this._blocked = blocked;
-
   ListBuilder<NestedComment>? _comments;
   ListBuilder<NestedComment> get comments =>
       _$this._comments ??= new ListBuilder<NestedComment>();
   set comments(ListBuilder<NestedComment>? comments) =>
       _$this._comments = comments;
+
+  CommentStateEnum? _state;
+  CommentStateEnum? get state => _$this._state;
+  set state(CommentStateEnum? state) => _$this._state = state;
 
   CommentBuilder() {
     Comment._defaults(this);
@@ -163,9 +217,8 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
       _content = $v.content;
       _formattedContent = $v.formattedContent?.toBuilder();
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
-      _deleted = $v.deleted;
-      _blocked = $v.blocked;
       _comments = $v.comments?.toBuilder();
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -197,9 +250,8 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
               content: content,
               formattedContent: _formattedContent?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
-              deleted: deleted,
-              blocked: blocked,
-              comments: _comments?.build());
+              comments: _comments?.build(),
+              state: state);
     } catch (_) {
       late String _$failedField;
       try {
@@ -210,7 +262,6 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
         _formattedContent?.build();
         _$failedField = 'mediaUrlsV2';
         _mediaUrlsV2?.build();
-
         _$failedField = 'comments';
         _comments?.build();
       } catch (e) {

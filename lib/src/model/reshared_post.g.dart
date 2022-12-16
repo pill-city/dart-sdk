@@ -6,6 +6,73 @@ part of 'reshared_post.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const ResharedPostStateEnum _$resharedPostStateEnum_visible =
+    const ResharedPostStateEnum._('visible');
+const ResharedPostStateEnum _$resharedPostStateEnum_invisible =
+    const ResharedPostStateEnum._('invisible');
+const ResharedPostStateEnum _$resharedPostStateEnum_authorBlocked =
+    const ResharedPostStateEnum._('authorBlocked');
+const ResharedPostStateEnum _$resharedPostStateEnum_deleted =
+    const ResharedPostStateEnum._('deleted');
+
+ResharedPostStateEnum _$resharedPostStateEnumValueOf(String name) {
+  switch (name) {
+    case 'visible':
+      return _$resharedPostStateEnum_visible;
+    case 'invisible':
+      return _$resharedPostStateEnum_invisible;
+    case 'authorBlocked':
+      return _$resharedPostStateEnum_authorBlocked;
+    case 'deleted':
+      return _$resharedPostStateEnum_deleted;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<ResharedPostStateEnum> _$resharedPostStateEnumValues =
+    new BuiltSet<ResharedPostStateEnum>(const <ResharedPostStateEnum>[
+  _$resharedPostStateEnum_visible,
+  _$resharedPostStateEnum_invisible,
+  _$resharedPostStateEnum_authorBlocked,
+  _$resharedPostStateEnum_deleted,
+]);
+
+Serializer<ResharedPostStateEnum> _$resharedPostStateEnumSerializer =
+    new _$ResharedPostStateEnumSerializer();
+
+class _$ResharedPostStateEnumSerializer
+    implements PrimitiveSerializer<ResharedPostStateEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'authorBlocked': 'author_blocked',
+    'deleted': 'deleted',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'author_blocked': 'authorBlocked',
+    'deleted': 'deleted',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[ResharedPostStateEnum];
+  @override
+  final String wireName = 'ResharedPostStateEnum';
+
+  @override
+  Object serialize(Serializers serializers, ResharedPostStateEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  ResharedPostStateEnum deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      ResharedPostStateEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 abstract class ResharedPostBuilder {
   void replace(ResharedPost other);
   void update(void Function(ResharedPostBuilder) updates);
@@ -30,8 +97,8 @@ abstract class ResharedPostBuilder {
   ResharedPostPollBuilder get poll;
   set poll(ResharedPostPollBuilder? poll);
 
-  bool? get deleted;
-  set deleted(bool? deleted);
+  ResharedPostStateEnum? get state;
+  set state(ResharedPostStateEnum? state);
 }
 
 class _$$ResharedPost extends $ResharedPost {
@@ -50,7 +117,7 @@ class _$$ResharedPost extends $ResharedPost {
   @override
   final ResharedPostPoll? poll;
   @override
-  final bool? deleted;
+  final ResharedPostStateEnum state;
 
   factory _$$ResharedPost([void Function($ResharedPostBuilder)? updates]) =>
       (new $ResharedPostBuilder()..update(updates))._build();
@@ -63,12 +130,13 @@ class _$$ResharedPost extends $ResharedPost {
       this.formattedContent,
       this.mediaUrlsV2,
       this.poll,
-      this.deleted})
+      required this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'$ResharedPost', 'id');
     BuiltValueNullFieldError.checkNotNull(
         createdAtSeconds, r'$ResharedPost', 'createdAtSeconds');
     BuiltValueNullFieldError.checkNotNull(author, r'$ResharedPost', 'author');
+    BuiltValueNullFieldError.checkNotNull(state, r'$ResharedPost', 'state');
   }
 
   @override
@@ -89,7 +157,7 @@ class _$$ResharedPost extends $ResharedPost {
         formattedContent == other.formattedContent &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
         poll == other.poll &&
-        deleted == other.deleted;
+        state == other.state;
   }
 
   @override
@@ -105,7 +173,7 @@ class _$$ResharedPost extends $ResharedPost {
                     formattedContent.hashCode),
                 mediaUrlsV2.hashCode),
             poll.hashCode),
-        deleted.hashCode));
+        state.hashCode));
   }
 
   @override
@@ -118,7 +186,7 @@ class _$$ResharedPost extends $ResharedPost {
           ..add('formattedContent', formattedContent)
           ..add('mediaUrlsV2', mediaUrlsV2)
           ..add('poll', poll)
-          ..add('deleted', deleted))
+          ..add('state', state))
         .toString();
   }
 }
@@ -163,9 +231,9 @@ class $ResharedPostBuilder
       _$this._poll ??= new ResharedPostPollBuilder();
   set poll(covariant ResharedPostPollBuilder? poll) => _$this._poll = poll;
 
-  bool? _deleted;
-  bool? get deleted => _$this._deleted;
-  set deleted(covariant bool? deleted) => _$this._deleted = deleted;
+  ResharedPostStateEnum? _state;
+  ResharedPostStateEnum? get state => _$this._state;
+  set state(covariant ResharedPostStateEnum? state) => _$this._state = state;
 
   $ResharedPostBuilder() {
     $ResharedPost._defaults(this);
@@ -181,7 +249,7 @@ class $ResharedPostBuilder
       _formattedContent = $v.formattedContent?.toBuilder();
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
       _poll = $v.poll?.toBuilder();
-      _deleted = $v.deleted;
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -215,7 +283,8 @@ class $ResharedPostBuilder
               formattedContent: _formattedContent?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
               poll: _poll?.build(),
-              deleted: deleted);
+              state: BuiltValueNullFieldError.checkNotNull(
+                  state, r'$ResharedPost', 'state'));
     } catch (_) {
       late String _$failedField;
       try {

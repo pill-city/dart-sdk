@@ -6,6 +6,73 @@ part of 'nested_comment.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const NestedCommentStateEnum _$nestedCommentStateEnum_visible =
+    const NestedCommentStateEnum._('visible');
+const NestedCommentStateEnum _$nestedCommentStateEnum_invisible =
+    const NestedCommentStateEnum._('invisible');
+const NestedCommentStateEnum _$nestedCommentStateEnum_authorBlocked =
+    const NestedCommentStateEnum._('authorBlocked');
+const NestedCommentStateEnum _$nestedCommentStateEnum_deleted =
+    const NestedCommentStateEnum._('deleted');
+
+NestedCommentStateEnum _$nestedCommentStateEnumValueOf(String name) {
+  switch (name) {
+    case 'visible':
+      return _$nestedCommentStateEnum_visible;
+    case 'invisible':
+      return _$nestedCommentStateEnum_invisible;
+    case 'authorBlocked':
+      return _$nestedCommentStateEnum_authorBlocked;
+    case 'deleted':
+      return _$nestedCommentStateEnum_deleted;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<NestedCommentStateEnum> _$nestedCommentStateEnumValues =
+    new BuiltSet<NestedCommentStateEnum>(const <NestedCommentStateEnum>[
+  _$nestedCommentStateEnum_visible,
+  _$nestedCommentStateEnum_invisible,
+  _$nestedCommentStateEnum_authorBlocked,
+  _$nestedCommentStateEnum_deleted,
+]);
+
+Serializer<NestedCommentStateEnum> _$nestedCommentStateEnumSerializer =
+    new _$NestedCommentStateEnumSerializer();
+
+class _$NestedCommentStateEnumSerializer
+    implements PrimitiveSerializer<NestedCommentStateEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'authorBlocked': 'author_blocked',
+    'deleted': 'deleted',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'author_blocked': 'authorBlocked',
+    'deleted': 'deleted',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[NestedCommentStateEnum];
+  @override
+  final String wireName = 'NestedCommentStateEnum';
+
+  @override
+  Object serialize(Serializers serializers, NestedCommentStateEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  NestedCommentStateEnum deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      NestedCommentStateEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$NestedComment extends NestedComment {
   @override
   final String id;
@@ -20,11 +87,9 @@ class _$NestedComment extends NestedComment {
   @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
-  final bool? deleted;
-  @override
-  final bool? blocked;
-  @override
   final String? replyToCommentId;
+  @override
+  final NestedCommentStateEnum state;
 
   factory _$NestedComment([void Function(NestedCommentBuilder)? updates]) =>
       (new NestedCommentBuilder()..update(updates))._build();
@@ -36,14 +101,14 @@ class _$NestedComment extends NestedComment {
       this.content,
       this.formattedContent,
       this.mediaUrlsV2,
-      this.deleted,
-      this.blocked,
-      this.replyToCommentId})
+      this.replyToCommentId,
+      required this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'NestedComment', 'id');
     BuiltValueNullFieldError.checkNotNull(
         createdAtSeconds, r'NestedComment', 'createdAtSeconds');
     BuiltValueNullFieldError.checkNotNull(author, r'NestedComment', 'author');
+    BuiltValueNullFieldError.checkNotNull(state, r'NestedComment', 'state');
   }
 
   @override
@@ -63,9 +128,8 @@ class _$NestedComment extends NestedComment {
         content == other.content &&
         formattedContent == other.formattedContent &&
         mediaUrlsV2 == other.mediaUrlsV2 &&
-        deleted == other.deleted &&
-        blocked == other.blocked &&
-        replyToCommentId == other.replyToCommentId;
+        replyToCommentId == other.replyToCommentId &&
+        state == other.state;
   }
 
   @override
@@ -75,17 +139,13 @@ class _$NestedComment extends NestedComment {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, id.hashCode),
-                                    createdAtSeconds.hashCode),
-                                author.hashCode),
-                            content.hashCode),
-                        formattedContent.hashCode),
-                    mediaUrlsV2.hashCode),
-                deleted.hashCode),
-            blocked.hashCode),
-        replyToCommentId.hashCode));
+                        $jc($jc($jc(0, id.hashCode), createdAtSeconds.hashCode),
+                            author.hashCode),
+                        content.hashCode),
+                    formattedContent.hashCode),
+                mediaUrlsV2.hashCode),
+            replyToCommentId.hashCode),
+        state.hashCode));
   }
 
   @override
@@ -97,9 +157,8 @@ class _$NestedComment extends NestedComment {
           ..add('content', content)
           ..add('formattedContent', formattedContent)
           ..add('mediaUrlsV2', mediaUrlsV2)
-          ..add('deleted', deleted)
-          ..add('blocked', blocked)
-          ..add('replyToCommentId', replyToCommentId))
+          ..add('replyToCommentId', replyToCommentId)
+          ..add('state', state))
         .toString();
   }
 }
@@ -137,18 +196,14 @@ class NestedCommentBuilder
   set mediaUrlsV2(ListBuilder<MediaUrlV2>? mediaUrlsV2) =>
       _$this._mediaUrlsV2 = mediaUrlsV2;
 
-  bool? _deleted;
-  bool? get deleted => _$this._deleted;
-  set deleted(bool? deleted) => _$this._deleted = deleted;
-
-  bool? _blocked;
-  bool? get blocked => _$this._blocked;
-  set blocked(bool? blocked) => _$this._blocked = blocked;
-
   String? _replyToCommentId;
   String? get replyToCommentId => _$this._replyToCommentId;
   set replyToCommentId(String? replyToCommentId) =>
       _$this._replyToCommentId = replyToCommentId;
+
+  NestedCommentStateEnum? _state;
+  NestedCommentStateEnum? get state => _$this._state;
+  set state(NestedCommentStateEnum? state) => _$this._state = state;
 
   NestedCommentBuilder() {
     NestedComment._defaults(this);
@@ -163,9 +218,8 @@ class NestedCommentBuilder
       _content = $v.content;
       _formattedContent = $v.formattedContent?.toBuilder();
       _mediaUrlsV2 = $v.mediaUrlsV2?.toBuilder();
-      _deleted = $v.deleted;
-      _blocked = $v.blocked;
       _replyToCommentId = $v.replyToCommentId;
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -198,9 +252,9 @@ class NestedCommentBuilder
               content: content,
               formattedContent: _formattedContent?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
-              deleted: deleted,
-              blocked: blocked,
-              replyToCommentId: replyToCommentId);
+              replyToCommentId: replyToCommentId,
+              state: BuiltValueNullFieldError.checkNotNull(
+                  state, r'NestedComment', 'state'));
     } catch (_) {
       late String _$failedField;
       try {

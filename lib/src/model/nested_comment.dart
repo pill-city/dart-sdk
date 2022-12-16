@@ -21,9 +21,8 @@ part 'nested_comment.g.dart';
 /// * [content] - Text content for the nested comment
 /// * [formattedContent] 
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
-/// * [deleted] - Whether the nested comment is deleted
-/// * [blocked] - Whether the nested comment's author is blocked
 /// * [replyToCommentId] - The ID of the comment that this comment is replying to
+/// * [state] - State of this entity that UI should show
 @BuiltValue()
 abstract class NestedComment implements Built<NestedComment, NestedCommentBuilder> {
   /// Permanent ID for the nested comment
@@ -48,17 +47,14 @@ abstract class NestedComment implements Built<NestedComment, NestedCommentBuilde
   @BuiltValueField(wireName: r'media_urls_v2')
   BuiltList<MediaUrlV2>? get mediaUrlsV2;
 
-  /// Whether the nested comment is deleted
-  @BuiltValueField(wireName: r'deleted')
-  bool? get deleted;
-
-  /// Whether the nested comment's author is blocked
-  @BuiltValueField(wireName: r'blocked')
-  bool? get blocked;
-
   /// The ID of the comment that this comment is replying to
   @BuiltValueField(wireName: r'reply_to_comment_id')
   String? get replyToCommentId;
+
+  /// State of this entity that UI should show
+  @BuiltValueField(wireName: r'state')
+  NestedCommentStateEnum get state;
+  // enum stateEnum {  visible,  invisible,  author_blocked,  deleted,  };
 
   NestedComment._();
 
@@ -68,8 +64,6 @@ abstract class NestedComment implements Built<NestedComment, NestedCommentBuilde
   static void _defaults(NestedCommentBuilder b) => b
       ..content = ''
       ..mediaUrlsV2 = ListBuilder()
-      ..deleted = false
-      ..blocked = false
       ..replyToCommentId = 'false';
 
   @BuiltValueSerializer(custom: true)
@@ -124,20 +118,6 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
         specifiedType: const FullType(BuiltList, [FullType(MediaUrlV2)]),
       );
     }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.blocked != null) {
-      yield r'blocked';
-      yield serializers.serialize(
-        object.blocked,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.replyToCommentId != null) {
       yield r'reply_to_comment_id';
       yield serializers.serialize(
@@ -145,6 +125,11 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
         specifiedType: const FullType(String),
       );
     }
+    yield r'state';
+    yield serializers.serialize(
+      object.state,
+      specifiedType: const FullType(NestedCommentStateEnum),
+    );
   }
 
   @override
@@ -210,26 +195,19 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
           ) as BuiltList<MediaUrlV2>;
           result.mediaUrlsV2.replace(valueDes);
           break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
-        case r'blocked':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.blocked = valueDes;
-          break;
         case r'reply_to_comment_id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.replyToCommentId = valueDes;
+          break;
+        case r'state':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(NestedCommentStateEnum),
+          ) as NestedCommentStateEnum;
+          result.state = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -258,5 +236,28 @@ class _$NestedCommentSerializer implements PrimitiveSerializer<NestedComment> {
     );
     return result.build();
   }
+}
+
+class NestedCommentStateEnum extends EnumClass {
+
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'visible')
+  static const NestedCommentStateEnum visible = _$nestedCommentStateEnum_visible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'invisible')
+  static const NestedCommentStateEnum invisible = _$nestedCommentStateEnum_invisible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'author_blocked')
+  static const NestedCommentStateEnum authorBlocked = _$nestedCommentStateEnum_authorBlocked;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'deleted')
+  static const NestedCommentStateEnum deleted = _$nestedCommentStateEnum_deleted;
+
+  static Serializer<NestedCommentStateEnum> get serializer => _$nestedCommentStateEnumSerializer;
+
+  const NestedCommentStateEnum._(String name): super(name);
+
+  static BuiltSet<NestedCommentStateEnum> get values => _$nestedCommentStateEnumValues;
+  static NestedCommentStateEnum valueOf(String name) => _$nestedCommentStateEnumValueOf(name);
 }
 

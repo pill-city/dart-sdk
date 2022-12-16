@@ -6,6 +6,70 @@ part of 'post.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const PostStateEnum _$postStateEnum_visible = const PostStateEnum._('visible');
+const PostStateEnum _$postStateEnum_invisible =
+    const PostStateEnum._('invisible');
+const PostStateEnum _$postStateEnum_authorBlocked =
+    const PostStateEnum._('authorBlocked');
+const PostStateEnum _$postStateEnum_deleted = const PostStateEnum._('deleted');
+
+PostStateEnum _$postStateEnumValueOf(String name) {
+  switch (name) {
+    case 'visible':
+      return _$postStateEnum_visible;
+    case 'invisible':
+      return _$postStateEnum_invisible;
+    case 'authorBlocked':
+      return _$postStateEnum_authorBlocked;
+    case 'deleted':
+      return _$postStateEnum_deleted;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<PostStateEnum> _$postStateEnumValues =
+    new BuiltSet<PostStateEnum>(const <PostStateEnum>[
+  _$postStateEnum_visible,
+  _$postStateEnum_invisible,
+  _$postStateEnum_authorBlocked,
+  _$postStateEnum_deleted,
+]);
+
+Serializer<PostStateEnum> _$postStateEnumSerializer =
+    new _$PostStateEnumSerializer();
+
+class _$PostStateEnumSerializer implements PrimitiveSerializer<PostStateEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'authorBlocked': 'author_blocked',
+    'deleted': 'deleted',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'visible': 'visible',
+    'invisible': 'invisible',
+    'author_blocked': 'authorBlocked',
+    'deleted': 'deleted',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[PostStateEnum];
+  @override
+  final String wireName = 'PostStateEnum';
+
+  @override
+  Object serialize(Serializers serializers, PostStateEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  PostStateEnum deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      PostStateEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$Post extends Post {
   @override
   final String id;
@@ -32,15 +96,13 @@ class _$Post extends Post {
   @override
   final BuiltList<AnonymizedCircle>? circles;
   @override
-  final bool? deleted;
-  @override
-  final bool? blocked;
-  @override
   final bool? isUpdateAvatar;
   @override
   final ResharedPostPoll? poll;
   @override
   final BuiltList<LinkPreview>? linkPreviews;
+  @override
+  final PostStateEnum state;
 
   factory _$Post([void Function(PostBuilder)? updates]) =>
       (new PostBuilder()..update(updates))._build();
@@ -58,17 +120,17 @@ class _$Post extends Post {
       this.reactions,
       this.comments,
       this.circles,
-      this.deleted,
-      this.blocked,
       this.isUpdateAvatar,
       this.poll,
-      this.linkPreviews})
+      this.linkPreviews,
+      required this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'Post', 'id');
     BuiltValueNullFieldError.checkNotNull(
         createdAtSeconds, r'Post', 'createdAtSeconds');
     BuiltValueNullFieldError.checkNotNull(author, r'Post', 'author');
     BuiltValueNullFieldError.checkNotNull(isPublic, r'Post', 'isPublic');
+    BuiltValueNullFieldError.checkNotNull(state, r'Post', 'state');
   }
 
   @override
@@ -94,11 +156,10 @@ class _$Post extends Post {
         reactions == other.reactions &&
         comments == other.comments &&
         circles == other.circles &&
-        deleted == other.deleted &&
-        blocked == other.blocked &&
         isUpdateAvatar == other.isUpdateAvatar &&
         poll == other.poll &&
-        linkPreviews == other.linkPreviews;
+        linkPreviews == other.linkPreviews &&
+        state == other.state;
   }
 
   @override
@@ -119,29 +180,25 @@ class _$Post extends Post {
                                                         $jc(
                                                             $jc(
                                                                 $jc(
-                                                                    $jc(
-                                                                        0,
-                                                                        id
-                                                                            .hashCode),
-                                                                    createdAtSeconds
+                                                                    0,
+                                                                    id
                                                                         .hashCode),
-                                                                author
+                                                                createdAtSeconds
                                                                     .hashCode),
-                                                            content.hashCode),
-                                                        formattedContent
-                                                            .hashCode),
-                                                    isPublic.hashCode),
-                                                reshareable.hashCode),
-                                            resharedFrom.hashCode),
-                                        mediaUrlsV2.hashCode),
-                                    reactions.hashCode),
-                                comments.hashCode),
-                            circles.hashCode),
-                        deleted.hashCode),
-                    blocked.hashCode),
-                isUpdateAvatar.hashCode),
-            poll.hashCode),
-        linkPreviews.hashCode));
+                                                            author.hashCode),
+                                                        content.hashCode),
+                                                    formattedContent.hashCode),
+                                                isPublic.hashCode),
+                                            reshareable.hashCode),
+                                        resharedFrom.hashCode),
+                                    mediaUrlsV2.hashCode),
+                                reactions.hashCode),
+                            comments.hashCode),
+                        circles.hashCode),
+                    isUpdateAvatar.hashCode),
+                poll.hashCode),
+            linkPreviews.hashCode),
+        state.hashCode));
   }
 
   @override
@@ -159,11 +216,10 @@ class _$Post extends Post {
           ..add('reactions', reactions)
           ..add('comments', comments)
           ..add('circles', circles)
-          ..add('deleted', deleted)
-          ..add('blocked', blocked)
           ..add('isUpdateAvatar', isUpdateAvatar)
           ..add('poll', poll)
-          ..add('linkPreviews', linkPreviews))
+          ..add('linkPreviews', linkPreviews)
+          ..add('state', state))
         .toString();
   }
 }
@@ -231,14 +287,6 @@ class PostBuilder implements Builder<Post, PostBuilder> {
   set circles(ListBuilder<AnonymizedCircle>? circles) =>
       _$this._circles = circles;
 
-  bool? _deleted;
-  bool? get deleted => _$this._deleted;
-  set deleted(bool? deleted) => _$this._deleted = deleted;
-
-  bool? _blocked;
-  bool? get blocked => _$this._blocked;
-  set blocked(bool? blocked) => _$this._blocked = blocked;
-
   bool? _isUpdateAvatar;
   bool? get isUpdateAvatar => _$this._isUpdateAvatar;
   set isUpdateAvatar(bool? isUpdateAvatar) =>
@@ -254,6 +302,10 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       _$this._linkPreviews ??= new ListBuilder<LinkPreview>();
   set linkPreviews(ListBuilder<LinkPreview>? linkPreviews) =>
       _$this._linkPreviews = linkPreviews;
+
+  PostStateEnum? _state;
+  PostStateEnum? get state => _$this._state;
+  set state(PostStateEnum? state) => _$this._state = state;
 
   PostBuilder() {
     Post._defaults(this);
@@ -274,11 +326,10 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       _reactions = $v.reactions?.toBuilder();
       _comments = $v.comments?.toBuilder();
       _circles = $v.circles?.toBuilder();
-      _deleted = $v.deleted;
-      _blocked = $v.blocked;
       _isUpdateAvatar = $v.isUpdateAvatar;
       _poll = $v.poll?.toBuilder();
       _linkPreviews = $v.linkPreviews?.toBuilder();
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -317,11 +368,11 @@ class PostBuilder implements Builder<Post, PostBuilder> {
               reactions: _reactions?.build(),
               comments: _comments?.build(),
               circles: _circles?.build(),
-              deleted: deleted,
-              blocked: blocked,
               isUpdateAvatar: isUpdateAvatar,
               poll: _poll?.build(),
-              linkPreviews: _linkPreviews?.build());
+              linkPreviews: _linkPreviews?.build(),
+              state: BuiltValueNullFieldError.checkNotNull(
+                  state, r'Post', 'state'));
     } catch (_) {
       late String _$failedField;
       try {

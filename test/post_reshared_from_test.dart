@@ -46,9 +46,9 @@ void main() {
       // TODO
     });
 
-    // Whether the reshared post is deleted
-    // bool deleted (default value: false)
-    test('to test the property `deleted`', () async {
+    // State of this entity that UI should show
+    // String state
+    test('to test the property `state`', () async {
       // TODO
     });
 

@@ -41,21 +41,15 @@ void main() {
       // TODO
     });
 
-    // Whether the comment is deleted
-    // bool deleted (default value: false)
-    test('to test the property `deleted`', () async {
-      // TODO
-    });
-
-    // Whether the comment's author is blocked
-    // bool blocked (default value: false)
-    test('to test the property `blocked`', () async {
-      // TODO
-    });
-
     // Nested comments for the comment
     // BuiltList<NestedComment> comments
     test('to test the property `comments`', () async {
+      // TODO
+    });
+
+    // State of this entity that UI should show
+    // String state
+    test('to test the property `state`', () async {
       // TODO
     });
 

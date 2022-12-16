@@ -76,18 +76,6 @@ void main() {
       // TODO
     });
 
-    // Whether the post is deleted
-    // bool deleted (default value: false)
-    test('to test the property `deleted`', () async {
-      // TODO
-    });
-
-    // Whether the post's author is blocked
-    // bool blocked (default value: false)
-    test('to test the property `blocked`', () async {
-      // TODO
-    });
-
     // Whether the post is an update avatar post
     // bool isUpdateAvatar (default value: false)
     test('to test the property `isUpdateAvatar`', () async {
@@ -102,6 +90,12 @@ void main() {
     // Link previews extracted from the text content
     // BuiltList<LinkPreview> linkPreviews (default value: ListBuilder())
     test('to test the property `linkPreviews`', () async {
+      // TODO
+    });
+
+    // State of this entity that UI should show
+    // String state
+    test('to test the property `state`', () async {
       // TODO
     });
 

@@ -33,11 +33,10 @@ part 'post.g.dart';
 /// * [reactions] - Reactions for the post
 /// * [comments] - Comments for the post
 /// * [circles] - Circles that the post is published in
-/// * [deleted] - Whether the post is deleted
-/// * [blocked] - Whether the post's author is blocked
 /// * [isUpdateAvatar] - Whether the post is an update avatar post
 /// * [poll] 
 /// * [linkPreviews] - Link previews extracted from the text content
+/// * [state] - State of this entity that UI should show
 @BuiltValue()
 abstract class Post implements Built<Post, PostBuilder> {
   /// Permanent ID for the post
@@ -85,14 +84,6 @@ abstract class Post implements Built<Post, PostBuilder> {
   @BuiltValueField(wireName: r'circles')
   BuiltList<AnonymizedCircle>? get circles;
 
-  /// Whether the post is deleted
-  @BuiltValueField(wireName: r'deleted')
-  bool? get deleted;
-
-  /// Whether the post's author is blocked
-  @BuiltValueField(wireName: r'blocked')
-  bool? get blocked;
-
   /// Whether the post is an update avatar post
   @BuiltValueField(wireName: r'is_update_avatar')
   bool? get isUpdateAvatar;
@@ -104,6 +95,11 @@ abstract class Post implements Built<Post, PostBuilder> {
   @BuiltValueField(wireName: r'link_previews')
   BuiltList<LinkPreview>? get linkPreviews;
 
+  /// State of this entity that UI should show
+  @BuiltValueField(wireName: r'state')
+  PostStateEnum get state;
+  // enum stateEnum {  visible,  invisible,  author_blocked,  deleted,  };
+
   Post._();
 
   factory Post([void updates(PostBuilder b)]) = _$Post;
@@ -113,8 +109,6 @@ abstract class Post implements Built<Post, PostBuilder> {
       ..content = ''
       ..reshareable = false
       ..mediaUrlsV2 = ListBuilder()
-      ..deleted = false
-      ..blocked = false
       ..isUpdateAvatar = false
       ..linkPreviews = ListBuilder();
 
@@ -210,20 +204,6 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
         specifiedType: const FullType(BuiltList, [FullType(AnonymizedCircle)]),
       );
     }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.blocked != null) {
-      yield r'blocked';
-      yield serializers.serialize(
-        object.blocked,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.isUpdateAvatar != null) {
       yield r'is_update_avatar';
       yield serializers.serialize(
@@ -245,6 +225,11 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
         specifiedType: const FullType(BuiltList, [FullType(LinkPreview)]),
       );
     }
+    yield r'state';
+    yield serializers.serialize(
+      object.state,
+      specifiedType: const FullType(PostStateEnum),
+    );
   }
 
   @override
@@ -353,20 +338,6 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
           ) as BuiltList<AnonymizedCircle>;
           result.circles.replace(valueDes);
           break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
-        case r'blocked':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.blocked = valueDes;
-          break;
         case r'is_update_avatar':
           final valueDes = serializers.deserialize(
             value,
@@ -388,6 +359,13 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
             specifiedType: const FullType(BuiltList, [FullType(LinkPreview)]),
           ) as BuiltList<LinkPreview>;
           result.linkPreviews.replace(valueDes);
+          break;
+        case r'state':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PostStateEnum),
+          ) as PostStateEnum;
+          result.state = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -416,5 +394,28 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
     );
     return result.build();
   }
+}
+
+class PostStateEnum extends EnumClass {
+
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'visible')
+  static const PostStateEnum visible = _$postStateEnum_visible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'invisible')
+  static const PostStateEnum invisible = _$postStateEnum_invisible;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'author_blocked')
+  static const PostStateEnum authorBlocked = _$postStateEnum_authorBlocked;
+  /// State of this entity that UI should show
+  @BuiltValueEnumConst(wireName: r'deleted')
+  static const PostStateEnum deleted = _$postStateEnum_deleted;
+
+  static Serializer<PostStateEnum> get serializer => _$postStateEnumSerializer;
+
+  const PostStateEnum._(String name): super(name);
+
+  static BuiltSet<PostStateEnum> get values => _$postStateEnumValues;
+  static PostStateEnum valueOf(String name) => _$postStateEnumValueOf(name);
 }
 

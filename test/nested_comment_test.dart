@@ -41,21 +41,15 @@ void main() {
       // TODO
     });
 
-    // Whether the nested comment is deleted
-    // bool deleted (default value: false)
-    test('to test the property `deleted`', () async {
-      // TODO
-    });
-
-    // Whether the nested comment's author is blocked
-    // bool blocked (default value: false)
-    test('to test the property `blocked`', () async {
-      // TODO
-    });
-
     // The ID of the comment that this comment is replying to
     // String replyToCommentId (default value: 'false')
     test('to test the property `replyToCommentId`', () async {
+      // TODO
+    });
+
+    // State of this entity that UI should show
+    // String state
+    test('to test the property `state`', () async {
       // TODO
     });
 

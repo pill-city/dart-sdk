@@ -20,11 +20,10 @@ Name | Type | Description | Notes
 **reactions** | [**BuiltList&lt;Reaction&gt;**](Reaction.md) | Reactions for the post | [optional] 
 **comments** | [**BuiltList&lt;Comment&gt;**](Comment.md) | Comments for the post | [optional] 
 **circles** | [**BuiltList&lt;AnonymizedCircle&gt;**](AnonymizedCircle.md) | Circles that the post is published in | [optional] 
-**deleted** | **bool** | Whether the post is deleted | [optional] [default to false]
-**blocked** | **bool** | Whether the post's author is blocked | [optional] [default to false]
 **isUpdateAvatar** | **bool** | Whether the post is an update avatar post | [optional] [default to false]
 **poll** | [**ResharedPostPoll**](ResharedPostPoll.md) |  | [optional] 
 **linkPreviews** | [**BuiltList&lt;LinkPreview&gt;**](LinkPreview.md) | Link previews extracted from the text content | [optional] [default to ListBuilder()]
+**state** | **String** | State of this entity that UI should show | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
