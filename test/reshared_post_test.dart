@@ -3,7 +3,7 @@ import 'package:pill_city/pill_city.dart';
 
 // tests for ResharedPost
 void main() {
-  //final instance = ResharedPostBuilder();
+  final instance = ResharedPostBuilder();
   // TODO add properties to the builder and call build()
 
   group(ResharedPost, () {
@@ -41,7 +41,7 @@ void main() {
       // TODO
     });
 
-    // ResharedPostPoll poll
+    // Poll poll
     test('to test the property `poll`', () async {
       // TODO
     });

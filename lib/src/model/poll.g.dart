@@ -6,38 +6,28 @@ part of 'poll.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class PollBuilder {
-  void replace(Poll other);
-  void update(void Function(PollBuilder) updates);
-  ListBuilder<PollChoice> get choices;
-  set choices(ListBuilder<PollChoice>? choices);
-
-  num? get closeBySeconds;
-  set closeBySeconds(num? closeBySeconds);
-}
-
-class _$$Poll extends $Poll {
+class _$Poll extends Poll {
   @override
   final BuiltList<PollChoice>? choices;
   @override
   final num? closeBySeconds;
 
-  factory _$$Poll([void Function($PollBuilder)? updates]) =>
-      (new $PollBuilder()..update(updates))._build();
+  factory _$Poll([void Function(PollBuilder)? updates]) =>
+      (new PollBuilder()..update(updates))._build();
 
-  _$$Poll._({this.choices, this.closeBySeconds}) : super._();
+  _$Poll._({this.choices, this.closeBySeconds}) : super._();
 
   @override
-  $Poll rebuild(void Function($PollBuilder) updates) =>
+  Poll rebuild(void Function(PollBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $PollBuilder toBuilder() => new $PollBuilder()..replace(this);
+  PollBuilder toBuilder() => new PollBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $Poll &&
+    return other is Poll &&
         choices == other.choices &&
         closeBySeconds == other.closeBySeconds;
   }
@@ -49,32 +39,31 @@ class _$$Poll extends $Poll {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$Poll')
+    return (newBuiltValueToStringHelper(r'Poll')
           ..add('choices', choices)
           ..add('closeBySeconds', closeBySeconds))
         .toString();
   }
 }
 
-class $PollBuilder implements Builder<$Poll, $PollBuilder>, PollBuilder {
-  _$$Poll? _$v;
+class PollBuilder implements Builder<Poll, PollBuilder> {
+  _$Poll? _$v;
 
   ListBuilder<PollChoice>? _choices;
   ListBuilder<PollChoice> get choices =>
       _$this._choices ??= new ListBuilder<PollChoice>();
-  set choices(covariant ListBuilder<PollChoice>? choices) =>
-      _$this._choices = choices;
+  set choices(ListBuilder<PollChoice>? choices) => _$this._choices = choices;
 
   num? _closeBySeconds;
   num? get closeBySeconds => _$this._closeBySeconds;
-  set closeBySeconds(covariant num? closeBySeconds) =>
+  set closeBySeconds(num? closeBySeconds) =>
       _$this._closeBySeconds = closeBySeconds;
 
-  $PollBuilder() {
-    $Poll._defaults(this);
+  PollBuilder() {
+    Poll._defaults(this);
   }
 
-  $PollBuilder get _$this {
+  PollBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _choices = $v.choices?.toBuilder();
@@ -85,24 +74,24 @@ class $PollBuilder implements Builder<$Poll, $PollBuilder>, PollBuilder {
   }
 
   @override
-  void replace(covariant $Poll other) {
+  void replace(Poll other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$Poll;
+    _$v = other as _$Poll;
   }
 
   @override
-  void update(void Function($PollBuilder)? updates) {
+  void update(void Function(PollBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $Poll build() => _build();
+  Poll build() => _build();
 
-  _$$Poll _build() {
-    _$$Poll _$result;
+  _$Poll _build() {
+    _$Poll _$result;
     try {
       _$result = _$v ??
-          new _$$Poll._(
+          new _$Poll._(
               choices: _choices?.build(), closeBySeconds: closeBySeconds);
     } catch (_) {
       late String _$failedField;
@@ -111,7 +100,7 @@ class $PollBuilder implements Builder<$Poll, $PollBuilder>, PollBuilder {
         _choices?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$Poll', _$failedField, e.toString());
+            r'Poll', _$failedField, e.toString());
       }
       rethrow;
     }

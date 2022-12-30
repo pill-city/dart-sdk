@@ -10,6 +10,8 @@ doc/CloudEmoticonRepo.md
 doc/Comment.md
 doc/CoreApi.md
 doc/CreatePostRequest.md
+doc/CreateReaction200Response.md
+doc/CreateReactionRequest.md
 doc/FormattedContent.md
 doc/FormattedContentSegment.md
 doc/LinkPreview.md
@@ -20,10 +22,8 @@ doc/PluginsApi.md
 doc/Poll.md
 doc/PollChoice.md
 doc/Post.md
-doc/PostResharedFrom.md
 doc/Reaction.md
 doc/ResharedPost.md
-doc/ResharedPostPoll.md
 doc/SignIn200Response.md
 doc/SignInRequest.md
 doc/User.md
@@ -45,6 +45,8 @@ lib/src/model/cloud_emoticon_entry.dart
 lib/src/model/cloud_emoticon_repo.dart
 lib/src/model/comment.dart
 lib/src/model/create_post_request.dart
+lib/src/model/create_reaction200_response.dart
+lib/src/model/create_reaction_request.dart
 lib/src/model/date.dart
 lib/src/model/formatted_content.dart
 lib/src/model/formatted_content_segment.dart
@@ -55,10 +57,8 @@ lib/src/model/nested_comment.dart
 lib/src/model/poll.dart
 lib/src/model/poll_choice.dart
 lib/src/model/post.dart
-lib/src/model/post_reshared_from.dart
 lib/src/model/reaction.dart
 lib/src/model/reshared_post.dart
-lib/src/model/reshared_post_poll.dart
 lib/src/model/sign_in200_response.dart
 lib/src/model/sign_in_request.dart
 lib/src/model/user.dart
@@ -72,6 +72,8 @@ test/cloud_emoticon_repo_test.dart
 test/comment_test.dart
 test/core_api_test.dart
 test/create_post_request_test.dart
+test/create_reaction200_response_test.dart
+test/create_reaction_request_test.dart
 test/formatted_content_segment_test.dart
 test/formatted_content_test.dart
 test/link_preview_test.dart
@@ -81,10 +83,8 @@ test/nested_comment_test.dart
 test/plugins_api_test.dart
 test/poll_choice_test.dart
 test/poll_test.dart
-test/post_reshared_from_test.dart
 test/post_test.dart
 test/reaction_test.dart
-test/reshared_post_poll_test.dart
 test/reshared_post_test.dart
 test/sign_in200_response_test.dart
 test/sign_in_request_test.dart

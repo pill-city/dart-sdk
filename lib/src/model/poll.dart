@@ -15,8 +15,8 @@ part 'poll.g.dart';
 /// Properties:
 /// * [choices] - Choices for this poll
 /// * [closeBySeconds] - In epoch seconds, by when this poll will close. Default 0 meaning the poll will never close.
-@BuiltValue(instantiable: false)
-abstract class Poll  {
+@BuiltValue()
+abstract class Poll implements Built<Poll, PollBuilder> {
   /// Choices for this poll
   @BuiltValueField(wireName: r'choices')
   BuiltList<PollChoice>? get choices;
@@ -25,13 +25,21 @@ abstract class Poll  {
   @BuiltValueField(wireName: r'close_by_seconds')
   num? get closeBySeconds;
 
+  Poll._();
+
+  factory Poll([void updates(PollBuilder b)]) = _$Poll;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PollBuilder b) => b
+      ..closeBySeconds = 0;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<Poll> get serializer => _$PollSerializer();
 }
 
 class _$PollSerializer implements PrimitiveSerializer<Poll> {
   @override
-  final Iterable<Type> types = const [Poll];
+  final Iterable<Type> types = const [Poll, _$Poll];
 
   @override
   final String wireName = r'Poll';
@@ -64,46 +72,6 @@ class _$PollSerializer implements PrimitiveSerializer<Poll> {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  Poll deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($Poll)) as $Poll;
-  }
-}
-
-/// a concrete implementation of [Poll], since [Poll] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $Poll implements Poll, Built<$Poll, $PollBuilder> {
-  $Poll._();
-
-  factory $Poll([void Function($PollBuilder)? updates]) = _$$Poll;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($PollBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$Poll> get serializer => _$$PollSerializer();
-}
-
-class _$$PollSerializer implements PrimitiveSerializer<$Poll> {
-  @override
-  final Iterable<Type> types = const [$Poll, _$$Poll];
-
-  @override
-  final String wireName = r'$Poll';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $Poll object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(Poll))!;
   }
 
   void _deserializeProperties(
@@ -141,12 +109,12 @@ class _$$PollSerializer implements PrimitiveSerializer<$Poll> {
   }
 
   @override
-  $Poll deserialize(
+  Poll deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $PollBuilder();
+    final result = PollBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

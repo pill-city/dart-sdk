@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **content** | **String** | Text content for the reshared post | [optional] [default to '']
 **formattedContent** | [**FormattedContent**](FormattedContent.md) |  | [optional] 
 **mediaUrlsV2** | [**BuiltList&lt;MediaUrlV2&gt;**](MediaUrlV2.md) | v2 media URLs for the comment's media | [optional] [default to ListBuilder()]
-**poll** | [**ResharedPostPoll**](ResharedPostPoll.md) |  | [optional] 
+**poll** | [**Poll**](Poll.md) |  | [optional] 
 **state** | **String** | State of this entity that UI should show | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

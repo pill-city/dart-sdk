@@ -86,7 +86,7 @@ class _$Post extends Post {
   @override
   final bool? reshareable;
   @override
-  final PostResharedFrom? resharedFrom;
+  final ResharedPost? resharedFrom;
   @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
@@ -98,7 +98,7 @@ class _$Post extends Post {
   @override
   final bool? isUpdateAvatar;
   @override
-  final ResharedPostPoll? poll;
+  final Poll? poll;
   @override
   final BuiltList<LinkPreview>? linkPreviews;
   @override
@@ -258,10 +258,10 @@ class PostBuilder implements Builder<Post, PostBuilder> {
   bool? get reshareable => _$this._reshareable;
   set reshareable(bool? reshareable) => _$this._reshareable = reshareable;
 
-  PostResharedFromBuilder? _resharedFrom;
-  PostResharedFromBuilder get resharedFrom =>
-      _$this._resharedFrom ??= new PostResharedFromBuilder();
-  set resharedFrom(PostResharedFromBuilder? resharedFrom) =>
+  ResharedPostBuilder? _resharedFrom;
+  ResharedPostBuilder get resharedFrom =>
+      _$this._resharedFrom ??= new ResharedPostBuilder();
+  set resharedFrom(ResharedPostBuilder? resharedFrom) =>
       _$this._resharedFrom = resharedFrom;
 
   ListBuilder<MediaUrlV2>? _mediaUrlsV2;
@@ -292,10 +292,9 @@ class PostBuilder implements Builder<Post, PostBuilder> {
   set isUpdateAvatar(bool? isUpdateAvatar) =>
       _$this._isUpdateAvatar = isUpdateAvatar;
 
-  ResharedPostPollBuilder? _poll;
-  ResharedPostPollBuilder get poll =>
-      _$this._poll ??= new ResharedPostPollBuilder();
-  set poll(ResharedPostPollBuilder? poll) => _$this._poll = poll;
+  PollBuilder? _poll;
+  PollBuilder get poll => _$this._poll ??= new PollBuilder();
+  set poll(PollBuilder? poll) => _$this._poll = poll;
 
   ListBuilder<LinkPreview>? _linkPreviews;
   ListBuilder<LinkPreview> get linkPreviews =>

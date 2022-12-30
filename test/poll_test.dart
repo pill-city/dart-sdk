@@ -3,7 +3,7 @@ import 'package:pill_city/pill_city.dart';
 
 // tests for Poll
 void main() {
-  //final instance = PollBuilder();
+  final instance = PollBuilder();
   // TODO add properties to the builder and call build()
 
   group(Poll, () {

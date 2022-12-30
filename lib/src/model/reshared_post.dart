@@ -5,8 +5,8 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:pill_city/src/model/media_url_v2.dart';
-import 'package:pill_city/src/model/reshared_post_poll.dart';
 import 'package:pill_city/src/model/formatted_content.dart';
+import 'package:pill_city/src/model/poll.dart';
 import 'package:pill_city/src/model/user.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -24,8 +24,8 @@ part 'reshared_post.g.dart';
 /// * [mediaUrlsV2] - v2 media URLs for the comment's media
 /// * [poll] 
 /// * [state] - State of this entity that UI should show
-@BuiltValue(instantiable: false)
-abstract class ResharedPost  {
+@BuiltValue()
+abstract class ResharedPost implements Built<ResharedPost, ResharedPostBuilder> {
   /// Permanent ID for the reshared post
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -49,12 +49,21 @@ abstract class ResharedPost  {
   BuiltList<MediaUrlV2>? get mediaUrlsV2;
 
   @BuiltValueField(wireName: r'poll')
-  ResharedPostPoll? get poll;
+  Poll? get poll;
 
   /// State of this entity that UI should show
   @BuiltValueField(wireName: r'state')
   ResharedPostStateEnum get state;
   // enum stateEnum {  visible,  invisible,  author_blocked,  deleted,  };
+
+  ResharedPost._();
+
+  factory ResharedPost([void updates(ResharedPostBuilder b)]) = _$ResharedPost;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ResharedPostBuilder b) => b
+      ..content = ''
+      ..mediaUrlsV2 = ListBuilder();
 
   @BuiltValueSerializer(custom: true)
   static Serializer<ResharedPost> get serializer => _$ResharedPostSerializer();
@@ -62,7 +71,7 @@ abstract class ResharedPost  {
 
 class _$ResharedPostSerializer implements PrimitiveSerializer<ResharedPost> {
   @override
-  final Iterable<Type> types = const [ResharedPost];
+  final Iterable<Type> types = const [ResharedPost, _$ResharedPost];
 
   @override
   final String wireName = r'ResharedPost';
@@ -112,7 +121,7 @@ class _$ResharedPostSerializer implements PrimitiveSerializer<ResharedPost> {
       yield r'poll';
       yield serializers.serialize(
         object.poll,
-        specifiedType: const FullType.nullable(ResharedPostPoll),
+        specifiedType: const FullType.nullable(Poll),
       );
     }
     yield r'state';
@@ -129,46 +138,6 @@ class _$ResharedPostSerializer implements PrimitiveSerializer<ResharedPost> {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  ResharedPost deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($ResharedPost)) as $ResharedPost;
-  }
-}
-
-/// a concrete implementation of [ResharedPost], since [ResharedPost] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $ResharedPost implements ResharedPost, Built<$ResharedPost, $ResharedPostBuilder> {
-  $ResharedPost._();
-
-  factory $ResharedPost([void Function($ResharedPostBuilder)? updates]) = _$$ResharedPost;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($ResharedPostBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$ResharedPost> get serializer => _$$ResharedPostSerializer();
-}
-
-class _$$ResharedPostSerializer implements PrimitiveSerializer<$ResharedPost> {
-  @override
-  final Iterable<Type> types = const [$ResharedPost, _$$ResharedPost];
-
-  @override
-  final String wireName = r'$ResharedPost';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $ResharedPost object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(ResharedPost))!;
   }
 
   void _deserializeProperties(
@@ -228,8 +197,8 @@ class _$$ResharedPostSerializer implements PrimitiveSerializer<$ResharedPost> {
         case r'poll':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(ResharedPostPoll),
-          ) as ResharedPostPoll?;
+            specifiedType: const FullType.nullable(Poll),
+          ) as Poll?;
           if (valueDes == null) continue;
           result.poll.replace(valueDes);
           break;
@@ -249,12 +218,12 @@ class _$$ResharedPostSerializer implements PrimitiveSerializer<$ResharedPost> {
   }
 
   @override
-  $ResharedPost deserialize(
+  ResharedPost deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $ResharedPostBuilder();
+    final result = ResharedPostBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

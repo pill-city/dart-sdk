@@ -47,7 +47,7 @@ void main() {
       // TODO
     });
 
-    // PostResharedFrom resharedFrom
+    // ResharedPost resharedFrom
     test('to test the property `resharedFrom`', () async {
       // TODO
     });
@@ -82,7 +82,7 @@ void main() {
       // TODO
     });
 
-    // ResharedPostPoll poll
+    // Poll poll
     test('to test the property `poll`', () async {
       // TODO
     });

@@ -65,6 +65,7 @@ All URIs are relative to *https://api.pill.city/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*CoreApi*](doc/CoreApi.md) | [**createPost**](doc/CoreApi.md#createpost) | **POST** /posts | Create a new post
+[*CoreApi*](doc/CoreApi.md) | [**createReaction**](doc/CoreApi.md#createreaction) | **POST** /post/{postId}/reactions | Create a reaction to a post
 [*CoreApi*](doc/CoreApi.md) | [**getAvailablePlugins**](doc/CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
 [*CoreApi*](doc/CoreApi.md) | [**getCircles**](doc/CoreApi.md#getcircles) | **GET** /circles | Get a user&#39;s circles
 [*CoreApi*](doc/CoreApi.md) | [**getHome**](doc/CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
@@ -84,6 +85,8 @@ Class | Method | HTTP request | Description
  - [CloudEmoticonRepo](doc/CloudEmoticonRepo.md)
  - [Comment](doc/Comment.md)
  - [CreatePostRequest](doc/CreatePostRequest.md)
+ - [CreateReaction200Response](doc/CreateReaction200Response.md)
+ - [CreateReactionRequest](doc/CreateReactionRequest.md)
  - [FormattedContent](doc/FormattedContent.md)
  - [FormattedContentSegment](doc/FormattedContentSegment.md)
  - [LinkPreview](doc/LinkPreview.md)
@@ -93,10 +96,8 @@ Class | Method | HTTP request | Description
  - [Poll](doc/Poll.md)
  - [PollChoice](doc/PollChoice.md)
  - [Post](doc/Post.md)
- - [PostResharedFrom](doc/PostResharedFrom.md)
  - [Reaction](doc/Reaction.md)
  - [ResharedPost](doc/ResharedPost.md)
- - [ResharedPostPoll](doc/ResharedPostPoll.md)
  - [SignIn200Response](doc/SignIn200Response.md)
  - [SignInRequest](doc/SignInRequest.md)
  - [User](doc/User.md)

@@ -7,8 +7,6 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add($Poll.serializer)
-      ..add($ResharedPost.serializer)
       ..add(AnonymizedCircle.serializer)
       ..add(Circle.serializer)
       ..add(CloudEmoticonCategory.serializer)
@@ -17,6 +15,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Comment.serializer)
       ..add(CommentStateEnum.serializer)
       ..add(CreatePostRequest.serializer)
+      ..add(CreateReaction200Response.serializer)
+      ..add(CreateReactionRequest.serializer)
       ..add(FormattedContent.serializer)
       ..add(FormattedContentSegment.serializer)
       ..add(FormattedContentSegmentTypesEnum.serializer)
@@ -26,12 +26,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Message.serializer)
       ..add(NestedComment.serializer)
       ..add(NestedCommentStateEnum.serializer)
+      ..add(Poll.serializer)
       ..add(PollChoice.serializer)
       ..add(Post.serializer)
-      ..add(PostResharedFrom.serializer)
       ..add(PostStateEnum.serializer)
       ..add(Reaction.serializer)
-      ..add(ResharedPostPoll.serializer)
+      ..add(ResharedPost.serializer)
       ..add(ResharedPostStateEnum.serializer)
       ..add(SignIn200Response.serializer)
       ..add(SignInRequest.serializer)
@@ -67,9 +67,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
           () => new ListBuilder<MediaUrlV2>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MediaUrlV2)]),
-          () => new ListBuilder<MediaUrlV2>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NestedComment)]),
           () => new ListBuilder<NestedComment>())
       ..addBuilderFactory(
@@ -87,9 +84,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(LinkPreview)]),
           () => new ListBuilder<LinkPreview>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(PollChoice)]),
-          () => new ListBuilder<PollChoice>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PollChoice)]),
           () => new ListBuilder<PollChoice>())

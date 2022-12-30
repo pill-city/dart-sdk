@@ -73,35 +73,7 @@ class _$ResharedPostStateEnumSerializer
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
-abstract class ResharedPostBuilder {
-  void replace(ResharedPost other);
-  void update(void Function(ResharedPostBuilder) updates);
-  String? get id;
-  set id(String? id);
-
-  num? get createdAtSeconds;
-  set createdAtSeconds(num? createdAtSeconds);
-
-  UserBuilder get author;
-  set author(UserBuilder? author);
-
-  String? get content;
-  set content(String? content);
-
-  FormattedContentBuilder get formattedContent;
-  set formattedContent(FormattedContentBuilder? formattedContent);
-
-  ListBuilder<MediaUrlV2> get mediaUrlsV2;
-  set mediaUrlsV2(ListBuilder<MediaUrlV2>? mediaUrlsV2);
-
-  ResharedPostPollBuilder get poll;
-  set poll(ResharedPostPollBuilder? poll);
-
-  ResharedPostStateEnum? get state;
-  set state(ResharedPostStateEnum? state);
-}
-
-class _$$ResharedPost extends $ResharedPost {
+class _$ResharedPost extends ResharedPost {
   @override
   final String id;
   @override
@@ -115,14 +87,14 @@ class _$$ResharedPost extends $ResharedPost {
   @override
   final BuiltList<MediaUrlV2>? mediaUrlsV2;
   @override
-  final ResharedPostPoll? poll;
+  final Poll? poll;
   @override
   final ResharedPostStateEnum state;
 
-  factory _$$ResharedPost([void Function($ResharedPostBuilder)? updates]) =>
-      (new $ResharedPostBuilder()..update(updates))._build();
+  factory _$ResharedPost([void Function(ResharedPostBuilder)? updates]) =>
+      (new ResharedPostBuilder()..update(updates))._build();
 
-  _$$ResharedPost._(
+  _$ResharedPost._(
       {required this.id,
       required this.createdAtSeconds,
       required this.author,
@@ -132,24 +104,24 @@ class _$$ResharedPost extends $ResharedPost {
       this.poll,
       required this.state})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'$ResharedPost', 'id');
+    BuiltValueNullFieldError.checkNotNull(id, r'ResharedPost', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        createdAtSeconds, r'$ResharedPost', 'createdAtSeconds');
-    BuiltValueNullFieldError.checkNotNull(author, r'$ResharedPost', 'author');
-    BuiltValueNullFieldError.checkNotNull(state, r'$ResharedPost', 'state');
+        createdAtSeconds, r'ResharedPost', 'createdAtSeconds');
+    BuiltValueNullFieldError.checkNotNull(author, r'ResharedPost', 'author');
+    BuiltValueNullFieldError.checkNotNull(state, r'ResharedPost', 'state');
   }
 
   @override
-  $ResharedPost rebuild(void Function($ResharedPostBuilder) updates) =>
+  ResharedPost rebuild(void Function(ResharedPostBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $ResharedPostBuilder toBuilder() => new $ResharedPostBuilder()..replace(this);
+  ResharedPostBuilder toBuilder() => new ResharedPostBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $ResharedPost &&
+    return other is ResharedPost &&
         id == other.id &&
         createdAtSeconds == other.createdAtSeconds &&
         author == other.author &&
@@ -178,7 +150,7 @@ class _$$ResharedPost extends $ResharedPost {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$ResharedPost')
+    return (newBuiltValueToStringHelper(r'ResharedPost')
           ..add('id', id)
           ..add('createdAtSeconds', createdAtSeconds)
           ..add('author', author)
@@ -191,55 +163,52 @@ class _$$ResharedPost extends $ResharedPost {
   }
 }
 
-class $ResharedPostBuilder
-    implements
-        Builder<$ResharedPost, $ResharedPostBuilder>,
-        ResharedPostBuilder {
-  _$$ResharedPost? _$v;
+class ResharedPostBuilder
+    implements Builder<ResharedPost, ResharedPostBuilder> {
+  _$ResharedPost? _$v;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   num? _createdAtSeconds;
   num? get createdAtSeconds => _$this._createdAtSeconds;
-  set createdAtSeconds(covariant num? createdAtSeconds) =>
+  set createdAtSeconds(num? createdAtSeconds) =>
       _$this._createdAtSeconds = createdAtSeconds;
 
   UserBuilder? _author;
   UserBuilder get author => _$this._author ??= new UserBuilder();
-  set author(covariant UserBuilder? author) => _$this._author = author;
+  set author(UserBuilder? author) => _$this._author = author;
 
   String? _content;
   String? get content => _$this._content;
-  set content(covariant String? content) => _$this._content = content;
+  set content(String? content) => _$this._content = content;
 
   FormattedContentBuilder? _formattedContent;
   FormattedContentBuilder get formattedContent =>
       _$this._formattedContent ??= new FormattedContentBuilder();
-  set formattedContent(covariant FormattedContentBuilder? formattedContent) =>
+  set formattedContent(FormattedContentBuilder? formattedContent) =>
       _$this._formattedContent = formattedContent;
 
   ListBuilder<MediaUrlV2>? _mediaUrlsV2;
   ListBuilder<MediaUrlV2> get mediaUrlsV2 =>
       _$this._mediaUrlsV2 ??= new ListBuilder<MediaUrlV2>();
-  set mediaUrlsV2(covariant ListBuilder<MediaUrlV2>? mediaUrlsV2) =>
+  set mediaUrlsV2(ListBuilder<MediaUrlV2>? mediaUrlsV2) =>
       _$this._mediaUrlsV2 = mediaUrlsV2;
 
-  ResharedPostPollBuilder? _poll;
-  ResharedPostPollBuilder get poll =>
-      _$this._poll ??= new ResharedPostPollBuilder();
-  set poll(covariant ResharedPostPollBuilder? poll) => _$this._poll = poll;
+  PollBuilder? _poll;
+  PollBuilder get poll => _$this._poll ??= new PollBuilder();
+  set poll(PollBuilder? poll) => _$this._poll = poll;
 
   ResharedPostStateEnum? _state;
   ResharedPostStateEnum? get state => _$this._state;
-  set state(covariant ResharedPostStateEnum? state) => _$this._state = state;
+  set state(ResharedPostStateEnum? state) => _$this._state = state;
 
-  $ResharedPostBuilder() {
-    $ResharedPost._defaults(this);
+  ResharedPostBuilder() {
+    ResharedPost._defaults(this);
   }
 
-  $ResharedPostBuilder get _$this {
+  ResharedPostBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
@@ -256,35 +225,35 @@ class $ResharedPostBuilder
   }
 
   @override
-  void replace(covariant $ResharedPost other) {
+  void replace(ResharedPost other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$ResharedPost;
+    _$v = other as _$ResharedPost;
   }
 
   @override
-  void update(void Function($ResharedPostBuilder)? updates) {
+  void update(void Function(ResharedPostBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $ResharedPost build() => _build();
+  ResharedPost build() => _build();
 
-  _$$ResharedPost _build() {
-    _$$ResharedPost _$result;
+  _$ResharedPost _build() {
+    _$ResharedPost _$result;
     try {
       _$result = _$v ??
-          new _$$ResharedPost._(
+          new _$ResharedPost._(
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'$ResharedPost', 'id'),
+                  id, r'ResharedPost', 'id'),
               createdAtSeconds: BuiltValueNullFieldError.checkNotNull(
-                  createdAtSeconds, r'$ResharedPost', 'createdAtSeconds'),
+                  createdAtSeconds, r'ResharedPost', 'createdAtSeconds'),
               author: author.build(),
               content: content,
               formattedContent: _formattedContent?.build(),
               mediaUrlsV2: _mediaUrlsV2?.build(),
               poll: _poll?.build(),
               state: BuiltValueNullFieldError.checkNotNull(
-                  state, r'$ResharedPost', 'state'));
+                  state, r'ResharedPost', 'state'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -299,7 +268,7 @@ class $ResharedPostBuilder
         _poll?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$ResharedPost', _$failedField, e.toString());
+            r'ResharedPost', _$failedField, e.toString());
       }
       rethrow;
     }

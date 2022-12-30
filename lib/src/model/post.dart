@@ -3,14 +3,14 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:pill_city/src/model/post_reshared_from.dart';
 import 'package:pill_city/src/model/anonymized_circle.dart';
 import 'package:pill_city/src/model/reaction.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:pill_city/src/model/media_url_v2.dart';
-import 'package:pill_city/src/model/reshared_post_poll.dart';
+import 'package:pill_city/src/model/reshared_post.dart';
 import 'package:pill_city/src/model/formatted_content.dart';
 import 'package:pill_city/src/model/comment.dart';
+import 'package:pill_city/src/model/poll.dart';
 import 'package:pill_city/src/model/user.dart';
 import 'package:pill_city/src/model/link_preview.dart';
 import 'package:built_value/built_value.dart';
@@ -66,7 +66,7 @@ abstract class Post implements Built<Post, PostBuilder> {
   bool? get reshareable;
 
   @BuiltValueField(wireName: r'reshared_from')
-  PostResharedFrom? get resharedFrom;
+  ResharedPost? get resharedFrom;
 
   /// v2 media URLs for the comment's media
   @BuiltValueField(wireName: r'media_urls_v2')
@@ -89,7 +89,7 @@ abstract class Post implements Built<Post, PostBuilder> {
   bool? get isUpdateAvatar;
 
   @BuiltValueField(wireName: r'poll')
-  ResharedPostPoll? get poll;
+  Poll? get poll;
 
   /// Link previews extracted from the text content
   @BuiltValueField(wireName: r'link_previews')
@@ -173,7 +173,7 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
       yield r'reshared_from';
       yield serializers.serialize(
         object.resharedFrom,
-        specifiedType: const FullType.nullable(PostResharedFrom),
+        specifiedType: const FullType.nullable(ResharedPost),
       );
     }
     if (object.mediaUrlsV2 != null) {
@@ -215,7 +215,7 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
       yield r'poll';
       yield serializers.serialize(
         object.poll,
-        specifiedType: const FullType.nullable(ResharedPostPoll),
+        specifiedType: const FullType.nullable(Poll),
       );
     }
     if (object.linkPreviews != null) {
@@ -305,8 +305,8 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
         case r'reshared_from':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(PostResharedFrom),
-          ) as PostResharedFrom?;
+            specifiedType: const FullType.nullable(ResharedPost),
+          ) as ResharedPost?;
           if (valueDes == null) continue;
           result.resharedFrom.replace(valueDes);
           break;
@@ -348,8 +348,8 @@ class _$PostSerializer implements PrimitiveSerializer<Post> {
         case r'poll':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(ResharedPostPoll),
-          ) as ResharedPostPoll?;
+            specifiedType: const FullType.nullable(Poll),
+          ) as Poll?;
           if (valueDes == null) continue;
           result.poll.replace(valueDes);
           break;

@@ -14,6 +14,13 @@ void main() {
       // TODO
     });
 
+    // Create a reaction to a post
+    //
+    //Future<CreateReaction200Response> createReaction(String postId, { CreateReactionRequest createReactionRequest }) async
+    test('test createReaction', () async {
+      // TODO
+    });
+
     // Get all available plugins
     //
     //Future<BuiltList<String>> getAvailablePlugins() async

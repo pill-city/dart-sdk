@@ -21,6 +21,8 @@ import 'package:pill_city/src/model/cloud_emoticon_entry.dart';
 import 'package:pill_city/src/model/cloud_emoticon_repo.dart';
 import 'package:pill_city/src/model/comment.dart';
 import 'package:pill_city/src/model/create_post_request.dart';
+import 'package:pill_city/src/model/create_reaction200_response.dart';
+import 'package:pill_city/src/model/create_reaction_request.dart';
 import 'package:pill_city/src/model/formatted_content.dart';
 import 'package:pill_city/src/model/formatted_content_segment.dart';
 import 'package:pill_city/src/model/link_preview.dart';
@@ -30,10 +32,8 @@ import 'package:pill_city/src/model/nested_comment.dart';
 import 'package:pill_city/src/model/poll.dart';
 import 'package:pill_city/src/model/poll_choice.dart';
 import 'package:pill_city/src/model/post.dart';
-import 'package:pill_city/src/model/post_reshared_from.dart';
 import 'package:pill_city/src/model/reaction.dart';
 import 'package:pill_city/src/model/reshared_post.dart';
-import 'package:pill_city/src/model/reshared_post_poll.dart';
 import 'package:pill_city/src/model/sign_in200_response.dart';
 import 'package:pill_city/src/model/sign_in_request.dart';
 import 'package:pill_city/src/model/user.dart';
@@ -48,19 +48,19 @@ part 'serializers.g.dart';
   CloudEmoticonRepo,
   Comment,
   CreatePostRequest,
+  CreateReaction200Response,
+  CreateReactionRequest,
   FormattedContent,
   FormattedContentSegment,
   LinkPreview,
   MediaUrlV2,
   Message,
   NestedComment,
-  Poll,$Poll,
+  Poll,
   PollChoice,
   Post,
-  PostResharedFrom,
   Reaction,
-  ResharedPost,$ResharedPost,
-  ResharedPostPoll,
+  ResharedPost,
   SignIn200Response,
   SignInRequest,
   User,
@@ -78,8 +78,6 @@ Serializers serializers = (_$serializers.toBuilder()
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),
       )
-      ..add(Poll.serializer)
-      ..add(ResharedPost.serializer)
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())

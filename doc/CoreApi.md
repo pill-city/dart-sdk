@@ -10,6 +10,7 @@ All URIs are relative to *https://api.pill.city/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createPost**](CoreApi.md#createpost) | **POST** /posts | Create a new post
+[**createReaction**](CoreApi.md#createreaction) | **POST** /post/{postId}/reactions | Create a reaction to a post
 [**getAvailablePlugins**](CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
 [**getCircles**](CoreApi.md#getcircles) | **GET** /circles | Get a user&#39;s circles
 [**getHome**](CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
@@ -51,6 +52,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Post**](Post.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createReaction**
+> CreateReaction200Response createReaction(postId, createReactionRequest)
+
+Create a reaction to a post
+
+### Example
+```dart
+import 'package:pill_city/api.dart';
+// TODO Configure HTTP basic authorization: bearer
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+
+final api = PillCity().getCoreApi();
+final String postId = postId_example; // String | Post ID
+final CreateReactionRequest createReactionRequest = ; // CreateReactionRequest | 
+
+try {
+    final response = api.createReaction(postId, createReactionRequest);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling CoreApi->createReaction: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postId** | **String**| Post ID | 
+ **createReactionRequest** | [**CreateReactionRequest**](CreateReactionRequest.md)|  | [optional] 
+
+### Return type
+
+[**CreateReaction200Response**](CreateReaction200Response.md)
 
 ### Authorization
 
