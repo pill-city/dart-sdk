@@ -151,7 +151,7 @@ class CoreApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/post/{postId}/reactions'.replaceAll('{' r'postId' '}', postId.toString());
+    final _path = r'/posts/{postId}/reactions'.replaceAll('{' r'postId' '}', postId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{

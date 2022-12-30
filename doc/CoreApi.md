@@ -10,7 +10,7 @@ All URIs are relative to *https://api.pill.city/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createPost**](CoreApi.md#createpost) | **POST** /posts | Create a new post
-[**createReaction**](CoreApi.md#createreaction) | **POST** /post/{postId}/reactions | Create a reaction to a post
+[**createReaction**](CoreApi.md#createreaction) | **POST** /posts/{postId}/reactions | Create a reaction to a post
 [**getAvailablePlugins**](CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
 [**getCircles**](CoreApi.md#getcircles) | **GET** /circles | Get a user&#39;s circles
 [**getHome**](CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts

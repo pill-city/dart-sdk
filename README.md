@@ -65,7 +65,7 @@ All URIs are relative to *https://api.pill.city/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*CoreApi*](doc/CoreApi.md) | [**createPost**](doc/CoreApi.md#createpost) | **POST** /posts | Create a new post
-[*CoreApi*](doc/CoreApi.md) | [**createReaction**](doc/CoreApi.md#createreaction) | **POST** /post/{postId}/reactions | Create a reaction to a post
+[*CoreApi*](doc/CoreApi.md) | [**createReaction**](doc/CoreApi.md#createreaction) | **POST** /posts/{postId}/reactions | Create a reaction to a post
 [*CoreApi*](doc/CoreApi.md) | [**getAvailablePlugins**](doc/CoreApi.md#getavailableplugins) | **GET** /availablePlugins | Get all available plugins
 [*CoreApi*](doc/CoreApi.md) | [**getCircles**](doc/CoreApi.md#getcircles) | **GET** /circles | Get a user&#39;s circles
 [*CoreApi*](doc/CoreApi.md) | [**getHome**](doc/CoreApi.md#gethome) | **GET** /home | Get or poll latest home posts
